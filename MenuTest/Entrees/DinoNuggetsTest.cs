@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Xunit;
+using DinoDiner.Menu.Entrees;
 
 namespace MenuTest.Entrees
 {
@@ -35,6 +36,8 @@ namespace MenuTest.Entrees
             Assert.Equal<int>(6, ingredients.Count);
         }
 
+
+        [Fact]
         public void AddingNuggetsShouldAddIngredients()
         {
             DinoNuggets dn = new DinoNuggets();
@@ -60,27 +63,30 @@ namespace MenuTest.Entrees
 
         }
 
+
+        [Fact]
         public void AddingNuggetsShouldIncreasePrice()
         {
             DinoNuggets dn = new DinoNuggets();
             dn.AddNugget();
-            Assert.Equal(dn.Price, 4.50);
+            Assert.Equal(4.50, dn.Price);
             dn.AddNugget();
-            Assert.Equal(dn.Price, 4.75);
+            Assert.Equal(4.75, dn.Price);
             dn.AddNugget();
-            Assert.Equal(dn.Price, 5.0);
+            Assert.Equal(5.0, dn.Price);
         }
 
 
+        [Fact]
         public void AddingNuggetsShouldIncreaseCalories()
         {
             DinoNuggets dn = new DinoNuggets();
             dn.AddNugget();
-            Assert.Equal(dn.Calories, 59*7);
+            Assert.Equal((uint)59*7, dn.Calories);
             dn.AddNugget();
-            Assert.Equal(dn.Calories, 59*8);
+            Assert.Equal((uint)59*8, dn.Calories);
             dn.AddNugget();
-            Assert.Equal(dn.Calories, 59*9);
+            Assert.Equal((uint)59*9, dn.Calories);
         }
     }
 }
