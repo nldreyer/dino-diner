@@ -22,7 +22,7 @@ namespace DinoDiner.Menu.Entrees
             {
                 List<string> ingredients = new List<string>() { "Steakburger Pattie", "Steakburger Pattie", "Steakburger Pattie" };
                 if (bun) ingredients.Add("Whole Wheat Bun");
-                if (lettuce) ingredients.Add("Lettuce");
+                if (lettuce) ingredients.Add("Romaine Lettuce");
                 if (tomato) ingredients.Add("Tomato");
                 if (onion) ingredients.Add("Onion");
                 if (pickle) ingredients.Add("Pickle");

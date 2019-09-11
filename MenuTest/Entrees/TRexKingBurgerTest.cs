@@ -33,7 +33,7 @@ namespace MenuTest.Entrees
                 if (ingredient.Equals("Steakburger Pattie")) count++;
             }
             Assert.Equal<int>(3, count);
-            Assert.Contains<string>("Lettuce", ingredients);
+            Assert.Contains<string>("Romaine Lettuce", ingredients);
             Assert.Contains<string>("Tomato", ingredients);
             Assert.Contains<string>("Onion", ingredients);
             Assert.Contains<string>("Pickle", ingredients);
