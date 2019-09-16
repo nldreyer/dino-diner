@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using DinoDiner.Menu.Entrees;
 
 namespace DinoDiner.Menu.Entrees
 {
-    public class Brontowurst
+    public class Brontowurst : Entree
     {
         private bool bun = true;
         private bool peppers = true;

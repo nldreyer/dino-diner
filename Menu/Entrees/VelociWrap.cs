@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using DinoDiner.Menu.Entrees;
 
 namespace DinoDiner.Menu.Entrees
 {
-    public class VelociWrap
+    public class VelociWrap : Entree
     {
         private bool dressing = true;
         private bool lettuce = true;

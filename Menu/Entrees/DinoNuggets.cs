@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using DinoDiner.Menu.Entrees;
 
 namespace DinoDiner.Menu.Entrees
 {
-    public class DinoNuggets
+    public class DinoNuggets : Entree
     {
         private uint extraNuggets = 0;
 

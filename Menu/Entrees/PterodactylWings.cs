@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using DinoDiner.Menu.Entrees;
 
 namespace DinoDiner.Menu.Entrees
 {
-    public class PterodactylWings
+    public class PterodactylWings : Entree
     {
         public double Price { get; set; }
         public uint Calories { get; set; }
