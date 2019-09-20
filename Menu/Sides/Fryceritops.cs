@@ -6,7 +6,6 @@ namespace DinoDiner.Menu.Sides
 {
     public class Fryceritops : Side
     {
-
         private Size size;
 
         public Fryceritops()

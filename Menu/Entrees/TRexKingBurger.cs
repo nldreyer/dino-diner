@@ -5,79 +5,53 @@ namespace DinoDiner.Menu.Entrees
 {
     public class TRexKingBurger : Entree
     {
-        private bool bun = true;
-        private bool lettuce = true;
-        private bool tomato = true;
-        private bool onion = true;
-        private bool pickle = true;
-        private bool ketchup = true;
-        private bool mustard = true;
-        private bool mayo = true;
-
-        public double Price { get; set; }
-        public uint Calories { get; set; }
-
-        public List<string> Ingredients
-        {
-            get
-            {
-                List<string> ingredients = new List<string>() { "Steakburger Pattie", "Steakburger Pattie", "Steakburger Pattie" };
-                if (bun) ingredients.Add("Whole Wheat Bun");
-                if (lettuce) ingredients.Add("Romaine Lettuce");
-                if (tomato) ingredients.Add("Tomato");
-                if (onion) ingredients.Add("Onion");
-                if (pickle) ingredients.Add("Pickle");
-                if (ketchup) ingredients.Add("Ketchup");
-                if (mustard) ingredients.Add("Mustard");
-                if (mayo) ingredients.Add("Mayo");
-                return ingredients;
-            }
-        }
-
         public TRexKingBurger()
         {
             this.Price = 8.45;
             this.Calories = 728;
+            this.Ingredients = new List<string>() { "Steakburger Pattie", "Steakburger Pattie", "Steakburger Pattie",
+                                                    "Whole Wheat Bun", "Romaine Lettuce", "Tomato", "Onion", "Pickle",
+                                                    "Ketchup", "Mustard", "Mayo" };
         }
 
         public void HoldBun()
         {
-            this.bun = false;
+            this.Ingredients.Remove("Whole Wheat Bun");
         }
 
         public void HoldLettuce()
         {
-            this.lettuce = false;
+            this.Ingredients.Remove("Romaine Lettuce");
         }
 
         public void HoldTomato()
         {
-            this.tomato = false;
+            this.Ingredients.Remove("Tomato");
         }
 
         public void HoldOnion()
         {
-            this.onion = false;
+            this.Ingredients.Remove("Onion");
         }
 
         public void HoldPickle()
         {
-            this.pickle = false;
+            this.Ingredients.Remove("Pickle");
         }
 
         public void HoldKetchup()
         {
-            this.ketchup = false;
+            this.Ingredients.Remove("Ketchup");
         }
 
         public void HoldMustard()
         {
-            this.mustard = false;
+            this.Ingredients.Remove("Mustard");
         }
 
         public void HoldMayo()
         {
-            this.mayo = false;
+            this.Ingredients.Remove("Mayo");
         }
     }
 }

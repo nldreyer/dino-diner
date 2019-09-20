@@ -5,51 +5,31 @@ namespace DinoDiner.Menu.Entrees
 {
     public class SteakosaurusBurger : Entree
     {
-        private bool bun = true;
-        private bool pickle = true;
-        private bool ketchup = true;
-        private bool mustard = true;
-
-        public double Price { get; set; }
-        public uint Calories { get; set; }
-
-        public List<string> Ingredients
-        {
-            get
-            {
-                List<string> ingredients = new List<string>() { "Steakburger Pattie" };
-                if (bun) ingredients.Add("Whole Wheat Bun");
-                if (pickle) ingredients.Add("Pickle");
-                if (ketchup) ingredients.Add("Ketchup");
-                if (mustard) ingredients.Add("Mustard");
-                return ingredients;
-            }
-        }
-
         public SteakosaurusBurger()
         {
             this.Price = 5.15;
             this.Calories = 621;
+            this.Ingredients = new List<string>() { "Steakburger Pattie", "Whole Wheat Bun", "Pickle", "Ketchup", "Mustard" };
         }
 
         public void HoldBun()
         {
-            this.bun = false;
+            this.Ingredients.Remove("Whole Wheat Bun");
         }
 
         public void HoldPickle()
         {
-            this.pickle = false;
+            this.Ingredients.Remove("Pickle");
         }
 
         public void HoldKetchup()
         {
-            this.ketchup = false;
+            this.Ingredients.Remove("Ketchup");
         }
 
         public void HoldMustard()
         {
-            this.mustard = false;
+            this.Ingredients.Remove("Mustard");
         }
     }
 }
