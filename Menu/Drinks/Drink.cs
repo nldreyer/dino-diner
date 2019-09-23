@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DinoDiner.Menu.Sides
+namespace DinoDiner.Menu.Drinks
 {
     public enum Size
     {
         Small,
-        Medium, 
+        Medium,
         Large
     }
 
-    public abstract class Side
+    public abstract class Drink
     {
         /// <summary>
         /// Gets and sets the price
@@ -24,7 +24,12 @@ namespace DinoDiner.Menu.Sides
         public uint Calories { get; set; }
 
         /// <summary>
-        /// Gets the ingredients list
+        /// Gets whether or not there is ice
+        /// </summary>
+        public virtual bool Ice { get; }
+
+        /// <summary>
+        /// Gets and sets the ingredients
         /// </summary>
         public List<string> Ingredients { get; set; }
 
