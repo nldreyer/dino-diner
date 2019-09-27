@@ -7,12 +7,16 @@ namespace DinoDiner.Menu.Drinks
     public class Sodasaurus : Drink
     {
         private SodasaurusFlavor flavor;
-        private bool ice = true;
-
         private Size size = Size.Small;
-        public uint Calories = 0;
-        public double Price = 1.50;
 
+
+        public Sodasaurus()
+        {
+            this.Price = 1.50;
+            this.Calories = 112;
+            this.Ice = true;
+            this.Ingredients = new List<string>() { "Water", "Natural Flavors", "Cane Sugar" };
+        }
 
         public override Size Size
         {
@@ -45,17 +49,10 @@ namespace DinoDiner.Menu.Drinks
                 flavor = value;
             }
         }
-        public override bool Ice
-        {
-            get
-            {
-                return ice;
-            }
-        }
 
         public void HoldIce()
         {
-            ice = false;
+            this.Ice = false;
         }
     }
 }
