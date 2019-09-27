@@ -96,7 +96,7 @@ namespace MenuTest.Drinks
         }
 
 
-        // The correct price and calories after changing to small, medium, and large
+        // The correct price and calories after changing to small, medium, and large sizes.
         [Fact]
         public void ShouldHaveCorrectPriceForSmall()
         {
@@ -147,13 +147,25 @@ namespace MenuTest.Drinks
         }
 
 
-        // That invoking HoldIce() results in the Ice propery being false
+        // That invoking HoldIce() results in the Ice propery being false.
         [Fact]
         public void ShouldHoldIce()
         {
             Sodasaurus soda = new Sodasaurus();
             soda.HoldIce();
             Assert.False(soda.Ice);
+        }
+
+
+        // Includes the correct ingredients
+        [Fact]
+        public void CorrectIngredients()
+        {
+            Sodasaurus soda = new Sodasaurus();
+            Assert.Contains<string>("Water", soda.Ingredients);
+            Assert.Contains<string>("Natural Flavors", soda.Ingredients);
+            Assert.Contains<string>("Cane Sugar", soda.Ingredients);
+            Assert.Equal<int>(3, soda.Ingredients.Count);
         }
     }
 }
