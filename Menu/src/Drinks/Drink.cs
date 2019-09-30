@@ -19,7 +19,7 @@ namespace DinoDiner.Menu.Drinks
         /// <summary>
         /// Gets whether or not there is ice
         /// </summary>
-        public virtual bool Ice { get; set; }
+        public virtual bool Ice { get; set; } = true;
 
         /// <summary>
         /// Gets and sets the ingredients
@@ -29,6 +29,6 @@ namespace DinoDiner.Menu.Drinks
         /// <summary>
         /// Gets or sets the size
         /// </summary>
-        public virtual Size Size { get; set; }
+        public virtual Size Size { get; set; } = Size.Small;
     }
 }

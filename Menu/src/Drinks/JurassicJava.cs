@@ -16,8 +16,8 @@ namespace DinoDiner.Menu.Drinks
         /// </summary>
         public JurassicJava()
         {
-            this.Price = 0;
-            this.Calories = 0;
+            this.Price = 0.59;
+            this.Calories = 2;
             this.Ice = false;
             this.Ingredients = new List<string>() { "Water", "Coffee" };
         }

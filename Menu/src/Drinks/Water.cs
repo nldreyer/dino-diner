@@ -17,10 +17,6 @@ namespace DinoDiner.Menu.Drinks
             this.Calories = 0;
             this.Size = Size.Small;
             this.Ingredients = new List<string>() { "Water" };
-            if (Lemon)
-            {
-                this.Ingredients.Add("Lemon");
-            }
         }
 
         /// <summary>
@@ -29,6 +25,7 @@ namespace DinoDiner.Menu.Drinks
         public void AddLemon()
         {
             Lemon = true;
+            this.Ingredients.Add("Lemon");
         }
 
         /// <summary>

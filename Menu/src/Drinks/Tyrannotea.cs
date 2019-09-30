@@ -7,22 +7,14 @@ namespace DinoDiner.Menu.Drinks
     public class Tyrannotea : Drink
     {
         private Size size = Size.Small;
-        public bool Sweet { get; set; } = false;
+        private bool sweet = false;
         public bool Lemon { get; set; } = false;
 
         public Tyrannotea()
         {
-            this.Price = 0;
-            this.Calories = 0;
+            this.Price = 0.99;
+            this.Calories = 8;
             this.Ingredients = new List<string>() { "Water", "Tea" };
-            if (Sweet)
-            {
-                this.Ingredients.Add("Cane Sugar");
-            }
-            if (Lemon)
-            {
-                this.Ingredients.Add("Lemon");
-            }
         }
 
         /// <summary>
@@ -39,6 +31,20 @@ namespace DinoDiner.Menu.Drinks
         public void AddLemon()
         {
             Lemon = true;
+            this.Ingredients.Add("Lemon");
+        }
+
+        public bool Sweet
+        {
+            get { return sweet; }
+            set
+            {
+                sweet = value;
+                if (sweet)
+                {
+                    this.Ingredients.Add("Cane Sugar");
+                }
+            }
         }
 
         public override Size Size

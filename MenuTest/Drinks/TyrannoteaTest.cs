@@ -125,8 +125,8 @@ namespace MenuTest.Drinks
         public void ShouldHaveCorrectCaloriesLargeSweet()
         {
             Tyrannotea tea = new Tyrannotea();
-            tea.Size = Size.Large;
             tea.Sweet = true;
+            tea.Size = Size.Large;
             Assert.Equal<uint>(64, tea.Calories);
         }
 
@@ -134,8 +134,8 @@ namespace MenuTest.Drinks
         public void ShouldHaveCorrectCaloriesMediumSweet()
         {
             Tyrannotea tea = new Tyrannotea();
-            tea.Size = Size.Medium;
             tea.Sweet = true;
+            tea.Size = Size.Medium;
             Assert.Equal<uint>(32, tea.Calories);
         }
 
@@ -143,8 +143,8 @@ namespace MenuTest.Drinks
         public void ShouldHaveCorrectCaloriesSmallSweet()
         {
             Tyrannotea tea = new Tyrannotea();
-            tea.Size = Size.Small;
             tea.Sweet = true;
+            tea.Size = Size.Small;
             Assert.Equal<uint>(16, tea.Calories);
         }
 
