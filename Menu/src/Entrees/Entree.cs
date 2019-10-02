@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*  Entree.cs
+*   Author: Nathan Bean
+*   Modified by: Nicholas Dreyer
+*/
+using System;
 using System.Collections.Generic;
 using System.Text;
 

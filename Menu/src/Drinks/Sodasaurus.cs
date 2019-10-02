@@ -1,4 +1,7 @@
-﻿using System;
+﻿/*  Sodasaururs.cs
+*   Author: Nicholas Dreyer
+*/
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -9,7 +12,9 @@ namespace DinoDiner.Menu.Drinks
         private SodasaurusFlavor flavor;
         private Size size = Size.Small;
 
-
+        /// <summary>
+        /// Sodasaurus constructor
+        /// </summary>
         public Sodasaurus()
         {
             this.Price = 1.50;
@@ -18,6 +23,9 @@ namespace DinoDiner.Menu.Drinks
             this.Ingredients = new List<string>() { "Water", "Natural Flavors", "Cane Sugar" };
         }
 
+        /// <summary>
+        /// Gets and sets Size property and updates price and calories
+        /// </summary>
         public override Size Size
         {
             get { return size; }
@@ -41,6 +49,10 @@ namespace DinoDiner.Menu.Drinks
                 }
             }
         }
+
+        /// <summary>
+        /// Gets and sets Flavor property
+        /// </summary>
         public SodasaurusFlavor Flavor
         {
             get { return flavor; }
@@ -50,6 +62,9 @@ namespace DinoDiner.Menu.Drinks
             }
         }
 
+        /// <summary>
+        /// Sets Ice property to false
+        /// </summary>
         public void HoldIce()
         {
             this.Ice = false;

@@ -1,4 +1,7 @@
-﻿using System;
+﻿/*  JurassicJava.cs
+*   Author: Nicholas Dreyer
+*/
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -23,7 +26,7 @@ namespace DinoDiner.Menu.Drinks
         }
 
         /// <summary>
-        /// 
+        /// Gets and sets Size property and updates price and calories
         /// </summary>
         public override Size Size
         {
@@ -50,7 +53,7 @@ namespace DinoDiner.Menu.Drinks
         }
 
         /// <summary>
-        /// Leaves room for cream
+        /// Sets RoomForCream property to true
         /// </summary>
         public void LeaveRoomForCream()
         {
@@ -58,7 +61,7 @@ namespace DinoDiner.Menu.Drinks
         }
 
         /// <summary>
-        /// Adds ice
+        /// Sets Ice property to true
         /// </summary>
         public void AddIce()
         {

@@ -1,10 +1,16 @@
-﻿using System.Collections.Generic;
+﻿/*  VelociWrap.cs
+*   Author: Nicholas Dreyer
+*/
+using System.Collections.Generic;
 using DinoDiner.Menu.Entrees;
 
 namespace DinoDiner.Menu.Entrees
 {
     public class VelociWrap : Entree
     {
+        /// <summary>
+        /// VelociWrap constructor
+        /// </summary>
         public VelociWrap()
         {
             this.Price = 6.86;
@@ -13,16 +19,25 @@ namespace DinoDiner.Menu.Entrees
                                                     "Romaine Lettuce", "Parmesan Cheese" };
         }
 
+        /// <summary>
+        /// Removes dressing from ingredients list
+        /// </summary>
         public void HoldDressing()
         {
             this.Ingredients.Remove("Ceasar Dressing");
         }
 
+        /// <summary>
+        /// Removes lettuce from ingredients list
+        /// </summary>
         public void HoldLettuce()
         {
             this.Ingredients.Remove("Romaine Lettuce");
         }
 
+        /// <summary>
+        /// Removes cheese from ingredients list
+        /// </summary>
         public void HoldCheese()
         {
             this.Ingredients.Remove("Parmesan Cheese");

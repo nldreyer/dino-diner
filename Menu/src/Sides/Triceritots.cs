@@ -1,4 +1,7 @@
-﻿using System;
+﻿/*  Triceritots.cs
+*   Author: Nicholas Dreyer
+*/
+using System;
 using System.Collections.Generic;
 using System.Text;
 

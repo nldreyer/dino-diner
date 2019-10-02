@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿/*  CretaceousCombo.cs
+*   Author: Nicholas Dreyer
+*/
+using System.Collections.Generic;
 using DinoDiner.Menu.Entrees;
 using DinoDiner.Menu.Drinks;
 using DinoDiner.Menu.Sides;

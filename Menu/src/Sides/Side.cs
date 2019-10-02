@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*  Side.cs
+*   Author: Nathan Bean
+*   Modified by: Nicholas Dreyer
+*/
+using System;
 using System.Collections.Generic;
 using System.Text;
 using DinoDiner.Menu;

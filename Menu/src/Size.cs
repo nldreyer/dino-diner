@@ -1,4 +1,7 @@
-﻿namespace DinoDiner.Menu
+﻿/*  Size.cs
+*   Author: Nicholas Dreyer
+*/
+namespace DinoDiner.Menu
 {
     public enum Size
     {

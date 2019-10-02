@@ -1,10 +1,16 @@
-﻿using System.Collections.Generic;
+﻿/*  DinoNuggets.cs
+*   Author: Nicholas Dreyer
+*/
+using System.Collections.Generic;
 using DinoDiner.Menu.Entrees;
 
 namespace DinoDiner.Menu.Entrees
 {
     public class DinoNuggets : Entree
     {
+        /// <summary>
+        /// DinoNuggets constructor
+        /// </summary>
         public DinoNuggets()
         {
             this.Price = 4.25;
@@ -16,6 +22,9 @@ namespace DinoDiner.Menu.Entrees
             }
         }
 
+        /// <summary>
+        /// Adds a nugget to the ingredient list and updates price and calories
+        /// </summary>
         public void AddNugget()
         {
             this.Ingredients.Add("Chicken Nugget");

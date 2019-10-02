@@ -1,4 +1,7 @@
-﻿using System;
+﻿/*  Water.cs
+*   Author: Nicholas Dreyer
+*/
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -20,7 +23,7 @@ namespace DinoDiner.Menu.Drinks
         }
 
         /// <summary>
-        /// Adds lemon
+        /// Adds lemon to ingredients list
         /// </summary>
         public void AddLemon()
         {
@@ -29,7 +32,7 @@ namespace DinoDiner.Menu.Drinks
         }
 
         /// <summary>
-        /// Holds ice
+        /// Sets Ice property to false
         /// </summary>
         public void HoldIce()
         {
