@@ -2,9 +2,8 @@
 *   Author: Nicholas Dreyer
 */
 using System.Collections.Generic;
-using DinoDiner.Menu.Entrees;
 
-namespace DinoDiner.Menu.Entrees
+namespace DinoDiner.Menu
 {
     public class SteakosaurusBurger : Entree
     {
