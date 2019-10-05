@@ -20,7 +20,17 @@ namespace DinoDiner.Menu
             this.Price = 1.50;
             this.Calories = 112;
             this.Ice = true;
-            this.Ingredients = new List<string>() { "Water", "Natural Flavors", "Cane Sugar" };
+        }
+
+        /// <summary>
+        /// Gets ingredients
+        /// </summary>
+        public override List<string> Ingredients
+        {
+            get
+            {
+                return new List<string>() { "Water", "Natural Flavors", "Cane Sugar" };
+            }
         }
 
         /// <summary>
@@ -68,6 +78,15 @@ namespace DinoDiner.Menu
         public void HoldIce()
         {
             this.Ice = false;
+        }
+
+        /// <summary>
+        /// Overrides the ToString function to return the menu item name
+        /// </summary>
+        /// <returns>Menu Item String</returns>
+        public override string ToString()
+        {
+            return Size + " " + Flavor + " Sodasaurus";
         }
     }
 }

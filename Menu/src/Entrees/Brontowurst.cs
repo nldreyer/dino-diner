@@ -7,6 +7,10 @@ namespace DinoDiner.Menu
 {
     public class Brontowurst : Entree
     {
+        private bool bun = true;
+        private bool onion = true;
+        private bool peppers = true;
+
         /// <summary>
         /// Brontowurst constructor
         /// </summary>
@@ -14,7 +18,21 @@ namespace DinoDiner.Menu
         {
             this.Price = 5.36;
             this.Calories = 498;
-            this.Ingredients = new List<string>() { "Brautwurst", "Whole Wheat Bun", "Peppers", "Onion" };
+        }
+
+        /// <summary>
+        /// Gets ingredients
+        /// </summary>
+        public override List<string> Ingredients
+        {
+            get
+            {
+                List<string> ingredients = new List<string>() { "Brautwurst" };
+                if(bun) ingredients.Add("Whole Wheat Bun");
+                if(peppers) ingredients.Add("Peppers");
+                if(onion) ingredients.Add("Onion");
+                return ingredients;
+            }
         }
 
         /// <summary>
@@ -22,7 +40,7 @@ namespace DinoDiner.Menu
         /// </summary>
         public void HoldBun()
         {
-            this.Ingredients.Remove("Whole Wheat Bun");
+            this.bun = false;
         }
 
         /// <summary>
@@ -30,7 +48,7 @@ namespace DinoDiner.Menu
         /// </summary>
         public void HoldPeppers()
         {
-            this.Ingredients.Remove("Peppers");
+            this.peppers = false;
         }
 
         /// <summary>
@@ -38,7 +56,16 @@ namespace DinoDiner.Menu
         /// </summary>
         public void HoldOnion()
         {
-            this.Ingredients.Remove("Onion");
+            this.onion = false;
+        }
+
+        /// <summary>
+        /// Overrides the ToString function to return the menu item name
+        /// </summary>
+        /// <returns>Menu Item String</returns>
+        public override string ToString()
+        {
+            return "Brontowurst";
         }
     }
 }

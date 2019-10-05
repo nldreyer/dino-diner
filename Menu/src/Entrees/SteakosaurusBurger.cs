@@ -7,6 +7,11 @@ namespace DinoDiner.Menu
 {
     public class SteakosaurusBurger : Entree
     {
+        private bool bun = true;
+        private bool pickle = true;
+        private bool ketchup = true;
+        private bool mustard = true;
+
         /// <summary>
         /// SteakosaurusBurger constructor
         /// </summary>
@@ -14,7 +19,22 @@ namespace DinoDiner.Menu
         {
             this.Price = 5.15;
             this.Calories = 621;
-            this.Ingredients = new List<string>() { "Steakburger Pattie", "Whole Wheat Bun", "Pickle", "Ketchup", "Mustard" };
+        }
+
+        /// <summary>
+        /// Gets ingredients
+        /// </summary>
+        public override List<string> Ingredients
+        {
+            get
+            {
+                List<string> ingredients = new List<string>() { "Steakburger Pattie" };
+                if(bun) ingredients.Add("Whole Wheat Bun");
+                if(pickle) ingredients.Add("Pickle");
+                if(ketchup) ingredients.Add("Ketchup");
+                if(mustard) ingredients.Add("Mustard");
+                return ingredients;
+            }
         }
 
         /// <summary>
@@ -22,7 +42,7 @@ namespace DinoDiner.Menu
         /// </summary>
         public void HoldBun()
         {
-            this.Ingredients.Remove("Whole Wheat Bun");
+            this.bun = false;
         }
 
         /// <summary>
@@ -30,7 +50,7 @@ namespace DinoDiner.Menu
         /// </summary>
         public void HoldPickle()
         {
-            this.Ingredients.Remove("Pickle");
+            this.pickle = false;
         }
 
         /// <summary>
@@ -38,7 +58,7 @@ namespace DinoDiner.Menu
         /// </summary>
         public void HoldKetchup()
         {
-            this.Ingredients.Remove("Ketchup");
+            this.ketchup = false;
         }
 
         /// <summary>
@@ -46,7 +66,16 @@ namespace DinoDiner.Menu
         /// </summary>
         public void HoldMustard()
         {
-            this.Ingredients.Remove("Mustard");
+            this.mustard = false;
+        }
+
+        /// <summary>
+        /// Overrides the ToString function to return the menu item name
+        /// </summary>
+        /// <returns>Menu Item String</returns>
+        public override string ToString()
+        {
+            return "Steakosaurus Burger";
         }
     }
 }

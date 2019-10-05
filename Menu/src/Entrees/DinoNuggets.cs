@@ -7,6 +7,8 @@ namespace DinoDiner.Menu
 {
     public class DinoNuggets : Entree
     {
+        private int extraNuggets = 0;
+
         /// <summary>
         /// DinoNuggets constructor
         /// </summary>
@@ -14,10 +16,21 @@ namespace DinoDiner.Menu
         {
             this.Price = 4.25;
             this.Calories = 354;
-            this.Ingredients = new List<string>();
-            for (int i = 0; i < 6; i++)
+        }
+
+        /// <summary>
+        /// Gets ingredients
+        /// </summary>
+        public override List<string> Ingredients
+        {
+            get
             {
-                this.Ingredients.Add("Chicken Nugget");
+                List<string> ingredients = new List<string>();
+                for (int i = 0; i < 6 + extraNuggets; i++)
+                {
+                    ingredients.Add("Chicken Nugget");
+                }
+                return ingredients;
             }
         }
 
@@ -26,9 +39,18 @@ namespace DinoDiner.Menu
         /// </summary>
         public void AddNugget()
         {
-            this.Ingredients.Add("Chicken Nugget");
+            this.extraNuggets++;
             this.Price += 0.25;
             this.Calories += 59;
+        }
+
+        /// <summary>
+        /// Overrides the ToString function to return the menu item name
+        /// </summary>
+        /// <returns>Menu Item String</returns>
+        public override string ToString()
+        {
+            return "Dino-Nuggets";
         }
     }
 }

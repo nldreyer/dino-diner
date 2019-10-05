@@ -20,7 +20,20 @@ namespace DinoDiner.Menu
         {
             this.Price = 0.99;
             this.Calories = 8;
-            this.Ingredients = new List<string>() { "Water", "Tea" };
+        }
+
+        /// <summary>
+        /// Gets ingredients
+        /// </summary>
+        public override List<string> Ingredients
+        {
+            get
+            {
+                List<string> ingredients = new List<string>() { "Water", "Tea" };
+                if(sweet) ingredients.Add("Cane Sugar");
+                if(Lemon) ingredients.Add("Lemon");
+                return ingredients;
+            }
         }
 
         /// <summary>
@@ -37,7 +50,6 @@ namespace DinoDiner.Menu
         public void AddLemon()
         {
             Lemon = true;
-            this.Ingredients.Add("Lemon");
         }
 
         /// <summary>
@@ -52,16 +64,11 @@ namespace DinoDiner.Menu
                 sweet = value;
                 if (sweet)
                 {
-                    this.Ingredients.Add("Cane Sugar");
                     this.Calories *= 2;
                 }
                 else
                 {
-                    if(this.Ingredients.Contains("Cane Sugar"))
-                    {
-                        this.Ingredients.Remove("Cane Sugar");
-                        this.Calories /= 2;
-                    }
+                    this.Calories /= 2;
                 }
             }
         }
@@ -96,6 +103,16 @@ namespace DinoDiner.Menu
                     this.Calories *= 2;
                 }
             }
+        }
+
+        /// <summary>
+        /// Overrides the ToString function to return the menu item name
+        /// </summary>
+        /// <returns>Menu Item String</returns>
+        public override string ToString()
+        {
+            if (Sweet) return Size + " Sweet Tyrannotea";
+            else return Size + " Tyrannotea";
         }
     }
 }

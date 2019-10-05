@@ -7,6 +7,10 @@ namespace DinoDiner.Menu
 {
     public class VelociWrap : Entree
     {
+        private bool dressing = true;
+        private bool lettuce = true;
+        private bool cheese = true;
+
         /// <summary>
         /// VelociWrap constructor
         /// </summary>
@@ -14,8 +18,21 @@ namespace DinoDiner.Menu
         {
             this.Price = 6.86;
             this.Calories = 356;
-            this.Ingredients = new List<string>() { "Flour Tortilla", "Chicken Breast", "Ceasar Dressing",
-                                                    "Romaine Lettuce", "Parmesan Cheese" };
+        }
+
+        /// <summary>
+        /// Gets ingredients
+        /// </summary>
+        public override List<string> Ingredients
+        {
+            get
+            {
+                List<string> ingredients = new List<string>() { "Flour Tortilla", "Chicken Breast" };
+                if(dressing) ingredients.Add("Ceasar Dressing");
+                if(lettuce) ingredients.Add("Romaine Lettuce");
+                if(cheese) ingredients.Add("Parmesan Cheese");
+                return ingredients;
+            }
         }
 
         /// <summary>
@@ -23,7 +40,7 @@ namespace DinoDiner.Menu
         /// </summary>
         public void HoldDressing()
         {
-            this.Ingredients.Remove("Ceasar Dressing");
+            this.dressing = false;
         }
 
         /// <summary>
@@ -31,7 +48,7 @@ namespace DinoDiner.Menu
         /// </summary>
         public void HoldLettuce()
         {
-            this.Ingredients.Remove("Romaine Lettuce");
+            this.lettuce = false;
         }
 
         /// <summary>
@@ -39,7 +56,16 @@ namespace DinoDiner.Menu
         /// </summary>
         public void HoldCheese()
         {
-            this.Ingredients.Remove("Parmesan Cheese");
+            this.cheese = false;
+        }
+
+        /// <summary>
+        /// Overrides the ToString function to return the menu item name
+        /// </summary>
+        /// <returns>Menu Item String</returns>
+        public override string ToString()
+        {
+            return "Veloci-Wrap";
         }
     }
 }

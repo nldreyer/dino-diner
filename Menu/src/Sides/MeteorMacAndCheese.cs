@@ -11,13 +11,29 @@ namespace DinoDiner.Menu
     {
         private Size size;
 
+        /// <summary>
+        /// MeteorMacAndCheese constructor
+        /// </summary>
         public MeteorMacAndCheese()
         {
             this.Price = 0.99;
             this.Calories = 420;
-            this.Ingredients = new List<string>() { "Macaroni Noodles", "Cheese Product", "Pork Sausage" };
         }
 
+        /// <summary>
+        /// Gets ingredients
+        /// </summary>
+        public override List<string> Ingredients
+        {
+            get
+            {
+                return new List<string>() { "Macaroni Noodles", "Cheese Product", "Pork Sausage" };
+            }
+        }
+
+        /// <summary>
+        /// Gets and sets size
+        /// </summary>
         public override Size Size
         {
             get { return size; }
@@ -40,6 +56,15 @@ namespace DinoDiner.Menu
                         break;
                 }
             }
+        }
+        
+        /// <summary>
+        /// Overrides the ToString function to return the menu item name
+        /// </summary>
+        /// <returns>Menu Item String</returns>
+        public override string ToString()
+        {
+            return Size + " Meteor Mac and Cheese";
         }
     }
 }

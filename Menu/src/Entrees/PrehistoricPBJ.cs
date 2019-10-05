@@ -7,6 +7,9 @@ namespace DinoDiner.Menu
 {
     public class PrehistoricPBJ : Entree
     {
+        private bool peanutButter = true;
+        private bool jelly = true;
+
         /// <summary>
         /// PrehistoricPBJ constructor
         /// </summary>
@@ -14,7 +17,20 @@ namespace DinoDiner.Menu
         {
             this.Price = 6.52;
             this.Calories = 483;
-            this.Ingredients = new List<string>() { "Bread", "Peanut Butter", "Jelly" };
+        }
+
+        /// <summary>
+        /// Gets ingredients
+        /// </summary>
+        public override List<string> Ingredients
+        {
+            get
+            {
+                List<string> ingredients = new List<string>() { "Bread" };
+                if(peanutButter) ingredients.Add("Peanut Butter");
+                if(jelly) ingredients.Add("Jelly");
+                return ingredients;
+            }
         }
 
         /// <summary>
@@ -22,7 +38,7 @@ namespace DinoDiner.Menu
         /// </summary>
         public void HoldPeanutButter()
         {
-            this.Ingredients.Remove("Peanut Butter");
+            this.peanutButter = false;
         }
 
         /// <summary>
@@ -30,7 +46,16 @@ namespace DinoDiner.Menu
         /// </summary>
         public void HoldJelly()
         {
-            this.Ingredients.Remove("Jelly");
+            this.jelly = false;
+        }
+
+        /// <summary>
+        /// Overrides the ToString function to return the menu item name
+        /// </summary>
+        /// <returns>Menu Item String</returns>
+        public override string ToString()
+        {
+            return "Prehistoric PB&J";
         }
     }
 }

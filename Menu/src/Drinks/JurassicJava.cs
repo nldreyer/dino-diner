@@ -22,7 +22,17 @@ namespace DinoDiner.Menu
             this.Price = 0.59;
             this.Calories = 2;
             this.Ice = false;
-            this.Ingredients = new List<string>() { "Water", "Coffee" };
+        }
+
+        /// <summary>
+        /// Gets ingredients
+        /// </summary>
+        public override List<string> Ingredients
+        {
+            get
+            {
+                return new List<string>() { "Water", "Coffee" };
+            }
         }
 
         /// <summary>
@@ -66,6 +76,16 @@ namespace DinoDiner.Menu
         public void AddIce()
         {
             this.Ice = true;
+        }
+
+        /// <summary>
+        /// Overrides the ToString function to return the menu item name
+        /// </summary>
+        /// <returns>Menu Item String</returns>
+        public override string ToString()
+        {
+            if(Decaf) return Size + " Decaf Jurassic Java";
+            else return Size + " Jurassic Java";
         }
     }
 }

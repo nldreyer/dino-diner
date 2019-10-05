@@ -52,9 +52,13 @@ namespace DinoDiner.Menu
             }
         }
 
-        public string ToString()
+        /// <summary>
+        /// Overrides the ToString function to return the menu item name
+        /// </summary>
+        /// <returns>Menu Item String</returns>
+        public override string ToString()
         {
-            return $"";
+            return Entree.ToString() + " Combo";
         }
     }
 }

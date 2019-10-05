@@ -15,6 +15,7 @@ namespace DinoDiner.Menu
         /// </summary>
         public double Price { get; set; }
 
+
         /// <summary>
         /// Gets and sets the calories
         /// </summary>
@@ -23,7 +24,7 @@ namespace DinoDiner.Menu
         /// <summary>
         /// Gets the ingredients list
         /// </summary>
-        public List<string> Ingredients { get; set; }
+        public abstract List<string> Ingredients { get; }
 
         /// <summary>
         /// Gets or sets the size
