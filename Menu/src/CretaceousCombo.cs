@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace DinoDiner.Menu
 {
-    public class CretaceousCombo
+    public class CretaceousCombo : IMenuItem
     {
         private Size size = Size.Small;
 
@@ -50,6 +50,11 @@ namespace DinoDiner.Menu
                 ingredients.AddRange(Side.Ingredients);
                 return ingredients;
             }
+        }
+
+        public uint Calories
+        {
+            get { return Entree.Calories + Drink.Calories+ Side.Calories; }
         }
 
         /// <summary>
