@@ -11,15 +11,21 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="20*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition/>
+            <RowDefinition Height="20*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button Grid.Column="0" Grid.Row="0" Click="SelectCombo">Combos</Button>
-        <Button Grid.Column="1" Grid.Row="0" Click="SelectEntree">Entrees</Button>
-        <Button Grid.Column="0" Grid.Row="1" Click="SelectSide">Sides</Button>
-        <Button Grid.Column="1" Grid.Row="1" Click="SelectDrink">Drinks</Button>
+        <Button Grid.Column="1" Grid.Row="1" Click="SelectCombo">Combos</Button>
+        <Button Grid.Column="3" Grid.Row="1" Click="SelectEntree">Entrees</Button>
+        <Button Grid.Column="1" Grid.Row="3" Click="SelectSide">Sides</Button>
+        <Button Grid.Column="3" Grid.Row="3" Click="SelectDrink">Drinks</Button>
     </Grid>
 </Page>
