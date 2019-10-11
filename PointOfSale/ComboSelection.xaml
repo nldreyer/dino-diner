@@ -26,13 +26,47 @@
                     <Setter Property="Margin" Value="10" />
                 </Style>
             </WrapPanel.Resources>
-            <Button Click="ComboSelected">Brontowurst Combo</Button>
-            <Button Click="ComboSelected">Dino-Nuggets Combo</Button>
-            <Button Click="ComboSelected">Steakosaurus Combo</Button>
-            <Button Click="ComboSelected">T-Rex King Burger Combo</Button>
-            <Button Click="ComboSelected">Pterodactyl Wings Combo</Button>
-            <Button Click="ComboSelected">Prehistoric PB&amp;J Combo</Button>
-            <Button Click="ComboSelected">VelociWrap Combo</Button>
+            <Button Click="ComboSelected" VerticalContentAlignment="Bottom">
+                <Button.Background>
+                    <ImageBrush ImageSource="Assets/DinoDiner-01.png"></ImageBrush>
+                </Button.Background>
+                Brontowurst Combo
+            </Button>
+            <Button Click="ComboSelected" VerticalContentAlignment="Bottom">
+                <Button.Background>
+                    <ImageBrush ImageSource="Assets/DinoDiner-02.png"></ImageBrush>
+                </Button.Background>
+                Dino-Nuggets Combo
+            </Button>
+            <Button Click="ComboSelected" VerticalContentAlignment="Bottom">
+                <Button.Background>
+                    <ImageBrush ImageSource="Assets/DinoDiner-05.png"></ImageBrush>
+                </Button.Background>
+                Steakosaurus Combo
+            </Button>
+            <Button Click="ComboSelected" VerticalContentAlignment="Bottom">
+                <Button.Background>
+                    <ImageBrush ImageSource="Assets/DinoDiner-06.png"></ImageBrush>
+                </Button.Background>
+                T-Rex King Burger Combo
+            </Button>
+            <Button Click="ComboSelected" VerticalContentAlignment="Bottom">
+                <Button.Background>
+                    <ImageBrush ImageSource="Assets/DinoDiner-04.png"></ImageBrush>
+                </Button.Background>
+                Pterodactyl Wings Combo</Button>
+            <Button Click="ComboSelected" VerticalContentAlignment="Bottom">
+                <Button.Background>
+                    <ImageBrush ImageSource="Assets/DinoDiner-03.png"></ImageBrush>
+                </Button.Background>
+                Prehistoric PB&amp;J Combo
+            </Button>
+            <Button Click="ComboSelected" VerticalContentAlignment="Bottom">
+                <Button.Background>
+                    <ImageBrush ImageSource="Assets/DinoDiner-07.png"></ImageBrush>
+                </Button.Background>
+                VelociWrap Combo
+            </Button>
         </WrapPanel>
     </Grid>
 </Page>
