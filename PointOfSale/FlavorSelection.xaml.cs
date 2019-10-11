@@ -1,4 +1,4 @@
-﻿/*  ComboSelection.xaml.cs
+﻿/*  FlavorSelection.xaml.cs
 *   Author: Nicholas Dreyer
 */
 using System;
@@ -19,23 +19,13 @@ using System.Windows.Shapes;
 namespace PointOfSale
 {
     /// <summary>
-    /// Interaction logic for ComboSelection.xaml
+    /// Interaction logic for FlavorSelection.xaml
     /// </summary>
-    public partial class ComboSelection : Page
+    public partial class FlavorSelection : Page
     {
-        public ComboSelection()
+        public FlavorSelection()
         {
             InitializeComponent();
-        }
-
-        /// <summary>
-        /// Navigates to CustomizeCombo.xaml
-        /// </summary>
-        /// <param name="sender">Button that was pressed.</param>
-        /// <param name="e">Event arguments.</param>
-        private void ComboSelected(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new CustomizeCombo());
         }
     }
 }

@@ -7,20 +7,32 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ComboSelection">
-
-    <WrapPanel>
-        <WrapPanel.Resources>
-            <Style TargetType="Button">
-                <Setter Property="MinWidth" Value="150"/>
-                <Setter Property="MinHeight" Value="150"/>
-            </Style>
-        </WrapPanel.Resources>
-        <Button>Brontowurst Combo</Button>
-        <Button>Dino-Nuggets Combo</Button>
-        <Button>Steakosaurus Combo</Button>
-        <Button>T-Rex King Burger Combo</Button>
-        <Button>Pterodactyl Wings Combo</Button>
-        <Button>Prehistoric PB&amp;J Combo</Button>
-        <Button>VelociWrap Combo</Button>
-    </WrapPanel>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <WrapPanel Grid.Column="1" Grid.Row="1">
+            <WrapPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="MinWidth" Value="150"/>
+                    <Setter Property="MinHeight" Value="150"/>
+                    <Setter Property="Margin" Value="10" />
+                </Style>
+            </WrapPanel.Resources>
+            <Button Click="ComboSelected">Brontowurst Combo</Button>
+            <Button Click="ComboSelected">Dino-Nuggets Combo</Button>
+            <Button Click="ComboSelected">Steakosaurus Combo</Button>
+            <Button Click="ComboSelected">T-Rex King Burger Combo</Button>
+            <Button Click="ComboSelected">Pterodactyl Wings Combo</Button>
+            <Button Click="ComboSelected">Prehistoric PB&amp;J Combo</Button>
+            <Button Click="ComboSelected">VelociWrap Combo</Button>
+        </WrapPanel>
+    </Grid>
 </Page>

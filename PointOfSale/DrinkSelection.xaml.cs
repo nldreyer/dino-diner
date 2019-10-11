@@ -1,4 +1,7 @@
-﻿using System;
+﻿/*  DrinkSelection.xaml.cs
+*   Author: Nicholas Dreyer
+*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +26,16 @@ namespace PointOfSale
         public DrinkSelection()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// Navigates to FlavorSelection.xaml
+        /// </summary>
+        /// <param name="sender">Button that was pressed.</param>
+        /// <param name="e">Event arguments.</param>
+        private void SelectFlavor(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new FlavorSelection());
         }
     }
 }

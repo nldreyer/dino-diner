@@ -1,4 +1,7 @@
-﻿using System;
+﻿/*  EntreeSelection.xaml.cs
+*   Author: Nicholas Dreyer
+*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
