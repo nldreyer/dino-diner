@@ -9,14 +9,27 @@ namespace DinoDiner.Menu
     {
         private Size size = Size.Small;
 
+        /// <summary>
+        /// Gets and sets entree
+        /// </summary>
         public Entree Entree { get; set; }
 
+        /// <summary>
+        /// Gets and sets drink
+        /// </summary>
         public Drink Drink { get; set; }
 
+        /// <summary>
+        /// Gets and sets side
+        /// </summary>
         public Side Side { get; set; }
 
         private CretaceousCombo() { }
 
+        /// <summary>
+        /// Cretaceous combo constructor
+        /// </summary>
+        /// <param name="entree"></param>
         public CretaceousCombo(Entree entree)
         {
             Entree = entree;
@@ -24,6 +37,9 @@ namespace DinoDiner.Menu
             Drink = new Sodasaurus();
         }
 
+        /// <summary>
+        /// Gets and sets size
+        /// </summary>
         public Size Size
         {
             get { return size; }
@@ -35,11 +51,17 @@ namespace DinoDiner.Menu
             }
         }
 
+        /// <summary>
+        /// Gets price
+        /// </summary>
         public double Price
         {
             get { return Entree.Price + Drink.Price + Side.Price - 0.25; }
         }
 
+        /// <summary>
+        /// Gets ingredients
+        /// </summary>
         public List<string> Ingredients
         {
             get
@@ -52,9 +74,12 @@ namespace DinoDiner.Menu
             }
         }
 
+        /// <summary>
+        /// Gets calories
+        /// </summary>
         public uint Calories
         {
-            get { return Entree.Calories + Drink.Calories+ Side.Calories; }
+            get { return Entree.Calories + Drink.Calories + Side.Calories; }
         }
 
         /// <summary>
@@ -63,7 +88,35 @@ namespace DinoDiner.Menu
         /// <returns>Menu Item String</returns>
         public override string ToString()
         {
-            return Entree.ToString() + " Combo";
+            return $"{Entree} Combo";
+        }
+
+        /// <summary>
+        /// Gets description
+        /// </summary>
+        public string Description
+        {
+            get
+            {
+                return this.ToString();
+            }
+        }
+
+        /// <summary>
+        /// Gets special
+        /// </summary>
+        public string[] Special
+        {
+            get
+            {
+                List<string> specials = new List<string>();
+                specials.AddRange(Entree.Special);
+                specials.Add(Side.Description());
+                specials.AddRange(Side.Special);
+                specials.Add(Drink.Description());
+                specials.AddRange(Drink.Special);
+                return specials.ToArray();
+            }
         }
     }
 }
