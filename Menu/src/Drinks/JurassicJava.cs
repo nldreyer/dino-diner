@@ -1,17 +1,31 @@
 ﻿/*  JurassicJava.cs
 *   Author: Nicholas Dreyer
 */
-using System;
 using System.Collections.Generic;
-using System.Text;
+using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
-    public class JurassicJava : Drink
+    public class JurassicJava : Drink, INotifyPropertyChanged
     {
-        public bool RoomForCream { get; set; } = false;
-        public bool Decaf { get; set; } = false;
-        private Size size = Size.Small;
+        // Backing variables
+        public bool RoomForCream = false;
+        public bool Decaf = false;
+        private Size size;
+
+        /// <summary>
+        /// Notify of a property change; For price, calories, ingredients, and special
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Invoke a changed property notification
+        /// </summary>
+        /// <param name="propertyName">Name of property being updated</param>
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
 
         /// <summary>
@@ -59,6 +73,9 @@ namespace DinoDiner.Menu
                         this.Calories = 8;
                         break;
                 }
+                OnPropertyChanged("Price");
+                OnPropertyChanged("Calories");
+                OnPropertyChanged("Size");
             }
         }
 
@@ -68,6 +85,7 @@ namespace DinoDiner.Menu
         public void LeaveRoomForCream()
         {
             RoomForCream = true;
+            OnPropertyChanged("Special");
         }
 
         /// <summary>
@@ -76,6 +94,7 @@ namespace DinoDiner.Menu
         public void AddIce()
         {
             this.Ice = true;
+            OnPropertyChanged("Special");
         }
 
         /// <summary>
@@ -84,8 +103,34 @@ namespace DinoDiner.Menu
         /// <returns>Menu Item String</returns>
         public override string ToString()
         {
-            if(Decaf) return Size + " Decaf Jurassic Java";
-            else return Size + " Jurassic Java";
+            if(Decaf) return $"{Size} Decaf Jurassic Java";
+            else return $"{Size} Jurassic Java";
+        }
+
+        /// <summary>
+        /// Gets description
+        /// </summary>
+        public override string Description
+        {
+            get
+            {
+                return this.ToString();
+            }
+        }
+
+        /// <summary>
+        /// Gets special
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> specials = new List<string>();
+                if (Ice) specials.Add("Add Ice");
+                if (RoomForCream) specials.Add("Leave Room For Cream");
+                if (Decaf) specials.Add("Decaf");
+                return specials.ToArray();
+            }
         }
     }
 }

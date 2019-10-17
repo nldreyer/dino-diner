@@ -1,17 +1,31 @@
 ﻿/*  Tyrannotea.cs
 *   Author: Nicholas Dreyer
 */
-using System;
 using System.Collections.Generic;
-using System.Text;
+using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
-    public class Tyrannotea : Drink
+    public class Tyrannotea : Drink, INotifyPropertyChanged
     {
-        private Size size = Size.Small;
+        // Backing variables
+        private Size size;
         private bool sweet = false;
-        public bool Lemon { get; set; } = false;
+        public bool Lemon = false;
+
+        /// <summary>
+        /// Notify of a property change; For price, calories, ingredients, and special
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Invoke a changed property notification
+        /// </summary>
+        /// <param name="propertyName">Name of property being updated</param>
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         /// <summary>
         /// Tyrannotea constructor
@@ -42,6 +56,7 @@ namespace DinoDiner.Menu
         public void HoldIce()
         {
             this.Ice = false;
+            OnPropertyChanged("Special");
         }
 
         /// <summary>
@@ -50,6 +65,8 @@ namespace DinoDiner.Menu
         public void AddLemon()
         {
             Lemon = true;
+            OnPropertyChanged("Ingredients");
+            OnPropertyChanged("Special");
         }
 
         /// <summary>
@@ -70,6 +87,9 @@ namespace DinoDiner.Menu
                 {
                     this.Calories /= 2;
                 }
+                OnPropertyChanged("Calories");
+                OnPropertyChanged("Ingredients");
+                OnPropertyChanged("Special");
             }
         }
 
@@ -102,6 +122,9 @@ namespace DinoDiner.Menu
                 {
                     this.Calories *= 2;
                 }
+                OnPropertyChanged("Price");
+                OnPropertyChanged("Calories");
+                OnPropertyChanged("Size");
             }
         }
 
@@ -111,8 +134,34 @@ namespace DinoDiner.Menu
         /// <returns>Menu Item String</returns>
         public override string ToString()
         {
-            if (Sweet) return Size + " Sweet Tyrannotea";
-            else return Size + " Tyrannotea";
+            if (Sweet) return $"{Size} Sweet Tyrannotea";
+            else return $"{Size} Tyrannotea";
+        }
+
+        /// <summary>
+        /// Gets description
+        /// </summary>
+        public override string Description
+        {
+            get
+            {
+                return this.ToString();
+            }
+        }
+
+        /// <summary>
+        /// Gets special
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> specials = new List<string>();
+                if (!Ice) specials.Add("Hold Ice");
+                if (sweet) specials.Add("Add Cane Sugar");
+                if (Lemon) specials.Add("Add Lemon");
+                return specials.ToArray();
+            }
         }
     }
 }
