@@ -2,9 +2,7 @@
 *   Author: Nathan Bean
 *   Modified by: Nicholas Dreyer
 */
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DinoDiner.Menu
 {
@@ -34,11 +32,11 @@ namespace DinoDiner.Menu
         /// <summary>
         /// Gets the description
         /// </summary>
-        public string Description { get; }
+        public abstract string Description { get; }
 
         /// <summary>
         /// Gets the special order instructions
         /// </summary>
-        public string[] Special { get; }
+        public abstract string[] Special { get; }
     }
 }

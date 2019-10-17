@@ -1,15 +1,29 @@
 ﻿/*  Triceritots.cs
 *   Author: Nicholas Dreyer
 */
-using System;
 using System.Collections.Generic;
-using System.Text;
+using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
-    public class Triceritots : Side
+    public class Triceritots : Side, INotifyPropertyChanged
     {
+        // Backing variable
         private Size size;
+
+        /// <summary>
+        /// Notify of a property change; For price, calories, ingredients, size, and special
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Invoke a changed property notification
+        /// </summary>
+        /// <param name="propertyName">Name of property being updated</param>
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         /// <summary>
         /// Triceritots constructor
@@ -55,6 +69,9 @@ namespace DinoDiner.Menu
                         this.Calories = 590;
                         break;
                 }
+                OnPropertyChanged("Price");
+                OnPropertyChanged("Calories");
+                OnPropertyChanged("Size");
             }
         }
 
@@ -64,7 +81,30 @@ namespace DinoDiner.Menu
         /// <returns>Menu Item String</returns>
         public override string ToString()
         {
-            return Size + " Triceritots";
+            return $"{Size} Triceritots";
+        }
+
+        /// <summary>
+        /// Gets description
+        /// </summary>
+        public override string Description
+        {
+            get
+            {
+                return this.ToString();
+            }
+        }
+
+        /// <summary>
+        /// Gets special
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> specials = new List<string>();
+                return specials.ToArray();
+            }
         }
     }
 }
