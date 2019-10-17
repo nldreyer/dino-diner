@@ -2,15 +2,31 @@
 *   Author: Nicholas Dreyer
 */
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
-    public class SteakosaurusBurger : Entree
+    public class SteakosaurusBurger : Entree, INotifyPropertyChanged
     {
+        // Backing variables
         private bool bun = true;
         private bool pickle = true;
         private bool ketchup = true;
         private bool mustard = true;
+
+        /// <summary>
+        /// Notify of a property change; For price, calories, ingredients, and special
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Invoke a changed property notification
+        /// </summary>
+        /// <param name="propertyName">Name of property being updated</param>
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         /// <summary>
         /// SteakosaurusBurger constructor
@@ -43,6 +59,8 @@ namespace DinoDiner.Menu
         public void HoldBun()
         {
             this.bun = false;
+            OnPropertyChanged("Ingredients");
+            OnPropertyChanged("Special");
         }
 
         /// <summary>
@@ -51,6 +69,8 @@ namespace DinoDiner.Menu
         public void HoldPickle()
         {
             this.pickle = false;
+            OnPropertyChanged("Ingredients");
+            OnPropertyChanged("Special");
         }
 
         /// <summary>
@@ -59,6 +79,8 @@ namespace DinoDiner.Menu
         public void HoldKetchup()
         {
             this.ketchup = false;
+            OnPropertyChanged("Ingredients");
+            OnPropertyChanged("Special");
         }
 
         /// <summary>
@@ -67,6 +89,8 @@ namespace DinoDiner.Menu
         public void HoldMustard()
         {
             this.mustard = false;
+            OnPropertyChanged("Ingredients");
+            OnPropertyChanged("Special");
         }
 
         /// <summary>
@@ -76,6 +100,33 @@ namespace DinoDiner.Menu
         public override string ToString()
         {
             return "Steakosaurus Burger";
+        }
+
+        /// <summary>
+        /// Gets description
+        /// </summary>
+        public override string Description
+        {
+            get
+            {
+                return this.ToString();
+            }
+        }
+
+        /// <summary>
+        /// Gets special
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> specials = new List<string>();
+                if (!bun) specials.Add("Hold Bun");
+                if (!pickle) specials.Add("Hold Pickle");
+                if (!ketchup) specials.Add("Hold Ketchup");
+                if (!mustard) specials.Add("Hold Mustard");
+                return specials.ToArray();
+            }
         }
     }
 }

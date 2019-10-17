@@ -30,5 +30,15 @@ namespace DinoDiner.Menu
         /// Gets or sets the size
         /// </summary>
         public virtual Size Size { get; set; }
+
+        /// <summary>
+        /// Gets the description
+        /// </summary>
+        public string Description { get; }
+
+        /// <summary>
+        /// Gets the special order instructions
+        /// </summary>
+        public string[] Special { get; }
     }
 }

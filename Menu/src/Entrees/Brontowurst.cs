@@ -2,14 +2,30 @@
 *   Author: Nicholas Dreyer
 */
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
-    public class Brontowurst : Entree
+    public class Brontowurst : Entree, INotifyPropertyChanged
     {
+        // Backing variables
         private bool bun = true;
         private bool onion = true;
         private bool peppers = true;
+
+        /// <summary>
+        /// Notify of a property change; For price, calories, ingredients, and special
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Invoke a changed property notification
+        /// </summary>
+        /// <param name="propertyName">Name of property being updated</param>
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         /// <summary>
         /// Brontowurst constructor
@@ -41,6 +57,8 @@ namespace DinoDiner.Menu
         public void HoldBun()
         {
             this.bun = false;
+            OnPropertyChanged("Ingredients");
+            OnPropertyChanged("Special");
         }
 
         /// <summary>
@@ -49,6 +67,8 @@ namespace DinoDiner.Menu
         public void HoldPeppers()
         {
             this.peppers = false;
+            OnPropertyChanged("Ingredients");
+            OnPropertyChanged("Special");
         }
 
         /// <summary>
@@ -57,6 +77,8 @@ namespace DinoDiner.Menu
         public void HoldOnion()
         {
             this.onion = false;
+            OnPropertyChanged("Ingredients");
+            OnPropertyChanged("Special");
         }
 
         /// <summary>
@@ -66,6 +88,32 @@ namespace DinoDiner.Menu
         public override string ToString()
         {
             return "Brontowurst";
+        }
+
+        /// <summary>
+        /// Gets description
+        /// </summary>
+        public override string Description
+        {
+            get
+            {
+                return this.ToString();
+            }
+        }
+
+        /// <summary>
+        /// Gets special
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> specials = new List<string>();
+                if (!bun) specials.Add("Hold Bun");
+                if (!onion) specials.Add("Hold Onion");
+                if (!peppers) specials.Add("Hold Peppers");
+                return specials.ToArray();
+            }
         }
     }
 }
