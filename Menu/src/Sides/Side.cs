@@ -27,7 +27,7 @@ namespace DinoDiner.Menu
         /// <summary>
         /// Gets or sets the size
         /// </summary>
-        public virtual Size Size { get; set; }
+        public virtual Size Size { get; set; } = Size.Small;
 
         /// <summary>
         /// Gets the description
