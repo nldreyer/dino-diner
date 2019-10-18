@@ -1,13 +1,21 @@
-﻿using System;
+﻿/*  IMenuItem.cs
+*   Author: Nicholas Dreyer
+*/
+using DinoDiner.Menu.src;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DinoDiner.Menu
 {
-    public interface IMenuItem
+    public interface IMenuItem : IOrderItem
     {
-        double Price { get; }
+        /// <summary>
+        /// Gets calories
+        /// </summary>
         uint Calories { get; }
+
+        /// <summary>
+        /// Gets ingredients
+        /// </summary>
         List<string> Ingredients { get; }
     }
 }
