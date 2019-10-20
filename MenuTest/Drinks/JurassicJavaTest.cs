@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿/*  JurassicJavaTest.cs
+*   Author: Nicholas Dreyer
+*/
 using Xunit;
 using DinoDiner.Menu;
 
