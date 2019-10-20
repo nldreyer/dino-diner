@@ -1,19 +1,16 @@
 ﻿/*  Order.cs
 *   Author: Nicholas Dreyer
 */
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 
-namespace DinoDiner.Menu.src
+namespace DinoDiner.Menu
 {
     public class Order
     {
         /// <summary>
-        /// Collection of all menu items in the order
+        /// Gets and sets all menu items in the order
         /// </summary>
-        public ObservableCollection<IOrderItem> Items { get; set; }
+        public ObservableCollection<IOrderItem> Items { get; set; } = new ObservableCollection<IOrderItem>();
 
         /// <summary>
         /// Subtotal for all menu items in order
@@ -38,7 +35,7 @@ namespace DinoDiner.Menu.src
         /// <summary>
         /// Tax rate for calculating sales tax cost
         /// </summary>
-        public double SalesTaxRate { get; protected set; }
+        public double SalesTaxRate { get; protected set; } = 0.09;
 
         /// <summary>
         /// Cost of sales tax on subtotal

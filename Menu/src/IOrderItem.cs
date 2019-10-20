@@ -2,7 +2,7 @@
 *   Author: Nicholas Dreyer
 */
 
-namespace DinoDiner.Menu.src
+namespace DinoDiner.Menu
 {
     public interface IOrderItem
     {

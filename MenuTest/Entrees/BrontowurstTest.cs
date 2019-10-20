@@ -55,6 +55,63 @@ namespace MenuTest.Entrees
             bw.HoldOnion();
             Assert.DoesNotContain<string>("Onion", bw.Ingredients);
         }
+
+        // Has the correct description
+        [Fact]
+        public void ShouldHaveCorrectDescription()
+        {
+            Brontowurst bw = new Brontowurst();
+            Assert.Equal("Brontowurst", bw.Description);
+        }
+
+        // Has the correct specials
+
+        [Fact]
+        public void ShouldHaveCorrectSpecialNone()
+        {
+            Brontowurst bw = new Brontowurst();
+            Assert.Empty(bw.Special);
+        }
+
+        [Fact]
+        public void ShouldHaveCorrectSpecialHoldBun()
+        {
+            Brontowurst bw = new Brontowurst();
+            bw.HoldBun();
+            Assert.Contains("Hold Bun", bw.Special);
+            Assert.Single(bw.Special);
+        }
+
+        [Fact]
+        public void ShouldHaveCorrectSpecialHoldOnion()
+        {
+            Brontowurst bw = new Brontowurst();
+            bw.HoldOnion();
+            Assert.Contains("Hold Onion", bw.Special);
+            Assert.Single(bw.Special);
+        }
+
+        [Fact]
+        public void ShouldHaveCorrectSpecialHoldPeppers()
+        {
+            Brontowurst bw = new Brontowurst();
+            bw.HoldPeppers();
+            Assert.Contains("Hold Peppers", bw.Special);
+            Assert.Single(bw.Special);
+        }
+
+        [Fact]
+        public void ShouldHaveCorrectSpecialHoldAll()
+        {
+            Brontowurst bw = new Brontowurst();
+            bw.HoldBun();
+            bw.HoldOnion();
+            bw.HoldPeppers();
+            Assert.Contains("Hold Bun", bw.Special);
+            Assert.Contains("Hold Onion", bw.Special);
+            Assert.Contains("Hold Peppers", bw.Special);
+            Assert.Equal<int>(3, bw.Special.Length);
+        }
     }
 
 }

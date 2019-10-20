@@ -41,7 +41,7 @@ namespace MenuTest.Drinks
         public void ShouldHaveCorrectSpaceForCream()
         {
             JurassicJava java = new JurassicJava();
-            Assert.False(java.RoomForCream);
+            Assert.Empty(java.Special);
         }
 
 
@@ -111,18 +111,72 @@ namespace MenuTest.Drinks
         {
             JurassicJava java = new JurassicJava();
             java.LeaveRoomForCream();
-            Assert.True(java.RoomForCream);
+            Assert.Contains("Leave Room For Cream", java.Special);
         }
 
 
         // Includes the correct ingredients
         [Fact]
-        public void CorrectIngredients()
+        public void ShouldHaveCorrectIngredients()
         {
             JurassicJava java = new JurassicJava();
             Assert.Contains<string>("Water", java.Ingredients);
             Assert.Contains<string>("Coffee", java.Ingredients);
             Assert.Equal<int>(2, java.Ingredients.Count);
+        }
+
+        // Has the correct description
+        [Fact]
+        public void ShouldHaveCorrectDescription()
+        {
+            JurassicJava java = new JurassicJava();
+            java.Size = Size.Medium;
+            Assert.Equal("Medium Jurassic Java", java.Description);
+        }
+
+        [Fact]
+        public void ShouldHaveCorrectDescriptionDecaf()
+        {
+            JurassicJava java = new JurassicJava();
+            java.Size = Size.Large;
+            java.Decaf = true;
+            Assert.Equal("Large Decaf Jurassic Java", java.Description);
+        }
+
+        // Has the correct specials
+
+        [Fact]
+        public void ShouldHaveCorrectSpecialNone()
+        {
+            JurassicJava java = new JurassicJava();
+            Assert.Empty(java.Special);
+        }
+
+        [Fact]
+        public void ShouldHaveCorrectSpecialIce()
+        {
+            JurassicJava java = new JurassicJava();
+            java.AddIce();
+            Assert.Contains("Add Ice", java.Special);
+        }
+
+        [Fact]
+        public void ShouldHaveCorrectSpecialCream()
+        {
+            JurassicJava java = new JurassicJava();
+            java.LeaveRoomForCream();
+            Assert.Contains("Leave Room For Cream", java.Special);
+        }
+
+        [Fact]
+        public void ShouldHaveCorrectSpecialIceAndCream()
+        {
+            JurassicJava java = new JurassicJava();
+            java.AddIce();
+            java.LeaveRoomForCream();
+            Assert.Contains("Add Ice", java.Special);
+            Assert.Contains("Leave Room For Cream", java.Special);
+            Assert.Equal<int>(2, java.Special.Length);
         }
     }
 }

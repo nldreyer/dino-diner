@@ -227,5 +227,59 @@ namespace MenuTest.Drinks
             Assert.Contains<string>("Lemon", tea.Ingredients);
             Assert.Equal<int>(4, tea.Ingredients.Count);
         }
+
+        // Has the correct description
+        [Fact]
+        public void ShouldHaveCorrectDescription()
+        {
+            Tyrannotea tea = new Tyrannotea();
+            tea.Size = Size.Medium;
+            Assert.Equal("Medium Tyrannotea", tea.Description);
+        }
+
+        [Fact]
+        public void ShouldHaveCorrectDescriptionSweet()
+        {
+            Tyrannotea tea = new Tyrannotea();
+            tea.Size = Size.Large;
+            tea.Sweet = true;
+            Assert.Equal("Large Sweet Tyrannotea", tea.Description);
+        }
+
+        // Has the correct specials
+
+        [Fact]
+        public void ShouldHaveCorrectSpecialNone()
+        {
+            Tyrannotea tea = new Tyrannotea();
+            Assert.Empty(tea.Special);
+        }
+
+        [Fact]
+        public void ShouldHaveCorrectSpecialIce()
+        {
+            Tyrannotea tea = new Tyrannotea();
+            tea.HoldIce();
+            Assert.Contains("Hold Ice", tea.Special);
+        }
+
+        [Fact]
+        public void ShouldHaveCorrectSpecialLemon()
+        {
+            Tyrannotea tea = new Tyrannotea();
+            tea.AddLemon();
+            Assert.Contains("Add Lemon", tea.Special);
+        }
+
+        [Fact]
+        public void ShouldHaveCorrectSpecialIceAndLemon()
+        {
+            Tyrannotea tea = new Tyrannotea();
+            tea.HoldIce();
+            tea.AddLemon();
+            Assert.Contains("Hold Ice", tea.Special);
+            Assert.Contains("Add Lemon", tea.Special);
+            Assert.Equal<int>(2, tea.Special.Length);
+        }
     }
 }

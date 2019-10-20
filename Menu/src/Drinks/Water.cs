@@ -8,11 +8,12 @@ namespace DinoDiner.Menu
 {
     public class Water : Drink, INotifyPropertyChanged
     {
-        // Backing variable
+        // Backing variables
         public bool Lemon = false;
+        private Size size;
 
         /// <summary>
-        /// Notify of a property change; For price, calories, ingredients, and special
+        /// Notify of a property change; For price, ingredients, and special
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -23,6 +24,22 @@ namespace DinoDiner.Menu
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        /// <summary>
+        /// Gets and sets Size
+        /// </summary>
+        public override Size Size
+        {
+            get
+            {
+                return size;
+            }
+            set
+            {
+                OnPropertyChanged("Size");
+                size = value;
+            }
         }
 
         /// <summary>

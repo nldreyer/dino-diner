@@ -9,7 +9,7 @@ namespace DinoDiner.Menu
     public class JurassicJava : Drink, INotifyPropertyChanged
     {
         // Backing variables
-        public bool RoomForCream = false;
+        private bool roomForCream = false;
         public bool Decaf = false;
         private Size size;
 
@@ -80,11 +80,11 @@ namespace DinoDiner.Menu
         }
 
         /// <summary>
-        /// Sets RoomForCream property to true
+        /// Sets roomForCream property to true
         /// </summary>
         public void LeaveRoomForCream()
         {
-            RoomForCream = true;
+            roomForCream = true;
             OnPropertyChanged("Special");
         }
 
@@ -127,7 +127,7 @@ namespace DinoDiner.Menu
             {
                 List<string> specials = new List<string>();
                 if (Ice) specials.Add("Add Ice");
-                if (RoomForCream) specials.Add("Leave Room For Cream");
+                if (roomForCream) specials.Add("Leave Room For Cream");
                 return specials.ToArray();
             }
         }

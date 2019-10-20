@@ -4,7 +4,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DinoDiner.Menu.src
+namespace DinoDiner.Menu
 {
     public class Menu
     {

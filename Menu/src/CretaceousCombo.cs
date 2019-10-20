@@ -2,27 +2,94 @@
 *   Author: Nicholas Dreyer
 */
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
-    public class CretaceousCombo : IMenuItem
+    public class CretaceousCombo : IMenuItem, INotifyPropertyChanged
     {
+        // Backing variables
         private Size size = Size.Small;
+        private Entree entree;
+        private Drink drink;
+        private Side side;
+
+        /// <summary>
+        /// Notify of a property change; For price, calories, ingredients, and special
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Invoke a changed property notification
+        /// </summary>
+        /// <param name="propertyName">Name of property being updated</param>
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         /// <summary>
         /// Gets and sets entree
         /// </summary>
-        public Entree Entree { get; set; }
+        public Entree Entree
+        {
+            get
+            {
+                return entree;
+            }
+            set
+            {
+                if (value != entree)
+                {
+                    OnPropertyChanged("Price");
+                    OnPropertyChanged("Calories");
+                    OnPropertyChanged("Ingredients");
+                }
+                entree = value;
+            }
+        }
 
         /// <summary>
         /// Gets and sets drink
         /// </summary>
-        public Drink Drink { get; set; }
+        public Drink Drink
+        {
+            get
+            {
+                return drink;
+            }
+            set
+            {
+                if(value != drink)
+                {
+                    OnPropertyChanged("Price");
+                    OnPropertyChanged("Calories");
+                    OnPropertyChanged("Ingredients");
+                }
+                drink = value;
+            }
+        }
 
         /// <summary>
         /// Gets and sets side
         /// </summary>
-        public Side Side { get; set; }
+        public Side Side
+        {
+            get
+            {
+                return side;
+            }
+            set
+            {
+                if (value != side)
+                {
+                    OnPropertyChanged("Price");
+                    OnPropertyChanged("Calories");
+                    OnPropertyChanged("Ingredients");
+                }
+                side = value;
+            }
+        }
 
         private CretaceousCombo() { }
 
@@ -32,7 +99,7 @@ namespace DinoDiner.Menu
         /// <param name="entree"></param>
         public CretaceousCombo(Entree entree)
         {
-            Entree = entree;
+            this.entree = entree;
             Side = new Fryceritops();
             Drink = new Sodasaurus();
         }
@@ -48,6 +115,8 @@ namespace DinoDiner.Menu
                 size = value;
                 Drink.Size = value;
                 Side.Size = value;
+                OnPropertyChanged("Price");
+                OnPropertyChanged("Calories");
             }
         }
 

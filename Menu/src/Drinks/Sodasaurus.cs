@@ -9,11 +9,11 @@ namespace DinoDiner.Menu
     public class Sodasaurus : Drink, INotifyPropertyChanged
     {
         // Backing variables
-        private SodasaurusFlavor flavor;
+        private SodasaurusFlavor flavor = SodasaurusFlavor.Cola;
         private Size size;
 
         /// <summary>
-        /// Notify of a property change; For price, calories, ingredients, and special
+        /// Notify of a property change; For price, calories, ingredients, flavor, and special
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -85,6 +85,7 @@ namespace DinoDiner.Menu
             set
             {
                 flavor = value;
+                OnPropertyChanged("Flavor");
             }
         }
 

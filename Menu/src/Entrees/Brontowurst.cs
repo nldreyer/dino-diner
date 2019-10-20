@@ -6,7 +6,7 @@ using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
-    public class Brontowurst : Entree, INotifyPropertyChanged
+    public class Brontowurst : Entree, IOrderItem, INotifyPropertyChanged
     {
         // Backing variables
         private bool bun = true;

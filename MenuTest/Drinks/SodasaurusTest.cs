@@ -126,5 +126,40 @@ namespace MenuTest.Drinks
             Assert.Contains<string>("Cane Sugar", soda.Ingredients);
             Assert.Equal<int>(3, soda.Ingredients.Count);
         }
+
+        // Has the correct description
+        [Fact]
+        public void ShouldHaveCorrectDescription()
+        {
+            Sodasaurus soda = new Sodasaurus();
+            soda.Size = Size.Medium;
+            Assert.Equal("Medium Cola Sodasaurus", soda.Description);
+        }
+
+        [Fact]
+        public void ShouldHaveCorrectDescriptionFlavor()
+        {
+            Sodasaurus soda = new Sodasaurus();
+            soda.Size = Size.Large;
+            soda.Flavor = SodasaurusFlavor.Orange;
+            Assert.Equal("Large Orange Sodasaurus", soda.Description);
+        }
+
+        // Has the correct specials
+
+        [Fact]
+        public void ShouldHaveCorrectSpecialNone()
+        {
+            Sodasaurus soda = new Sodasaurus();
+            Assert.Empty(soda.Special);
+        }
+
+        [Fact]
+        public void ShouldHaveCorrectSpecialIce()
+        {
+            Sodasaurus soda = new Sodasaurus();
+            soda.HoldIce();
+            Assert.Contains("Hold Ice", soda.Special);
+        }
     }
 }

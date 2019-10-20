@@ -1,7 +1,7 @@
 ﻿/*  IMenuItem.cs
 *   Author: Nicholas Dreyer
 */
-using DinoDiner.Menu.src;
+using DinoDiner.Menu;
 using System.Collections.Generic;
 
 namespace DinoDiner.Menu
