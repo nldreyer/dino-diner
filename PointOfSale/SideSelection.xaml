@@ -39,10 +39,10 @@
                         <Setter Property="Margin" Value="0,0,0,10" />
                     </Style>
                 </Grid.Resources>
-                <Button Grid.Row="0">Fryceritops</Button>
-                <Button Grid.Row="1">Meteor Mac &amp; Cheese</Button>
-                <Button Grid.Row="2">Mezzorella Sticks</Button>
-                <Button Grid.Row="3">Triceritots</Button>
+                <Button Name="BtnAddFryceritops" Grid.Row="0" Click="AddFryceritops">Fryceritops</Button>
+                <Button Name="BtnAddMeteorMacAndCheese" Grid.Row="1" Click="AddMeteorMacAndCheese">Meteor Mac &amp; Cheese</Button>
+                <Button Name="BtnAddMezzorellaSticks" Grid.Row="2" Click="AddMezzorellaSticks">Mezzorella Sticks</Button>
+                <Button Name="BtnAddTriceritots" Grid.Row="3" Click="AddTriceritots">Triceritots</Button>
             </Grid>
         </DockPanel>
         <DockPanel Grid.Column="3" Grid.Row="2">
@@ -57,9 +57,9 @@
                         <Setter Property="Margin" Value="0,0,0,10" />
                     </Style>
                 </Grid.Resources>
-                <Button Grid.Row="0">Small</Button>
-                <Button Grid.Row="1">Medium</Button>
-                <Button Grid.Row="2">Large</Button>
+                <Button Name="BtnPickSmall" Grid.Row="0" IsEnabled="False">Small</Button>
+                <Button Name="BtnPickMedium" Grid.Row="1" IsEnabled="False">Medium</Button>
+                <Button Name="BtnPickLarge" Grid.Row="2" IsEnabled="False">Large</Button>
             </Grid>
         </DockPanel>
     </Grid>
