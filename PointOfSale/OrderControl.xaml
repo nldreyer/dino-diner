@@ -14,7 +14,7 @@
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <TextBox Text="Order" Grid.Row="0" TextAlignment="Center" BorderThickness="1" BorderBrush="Black" IsReadOnly="True"/>
-        <ListBox Grid.Row="1" ItemsSource="{Binding Path=Items}" BorderThickness="1" BorderBrush="Black">
+        <ListBox Name="OrderItems" Grid.Row="1" ItemsSource="{Binding Path=Items}" BorderThickness="1" BorderBrush="Black" SelectionChanged="OnSelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>

@@ -24,30 +24,25 @@ namespace PointOfSale
         public MainWindow()
         {
             InitializeComponent();
-            Order order = (Order)DataContext;
-            order.Items.Add(new Fryceritops());
-            Tyrannotea tt = new Tyrannotea();
-            tt.Size = DinoDiner.Menu.Size.Large;
-            tt.AddLemon();
-            order.Items.Add(tt);
-            order.Items.Add(new Brontowurst());
+            OrderList.NavigationService = OrderInterface.NavigationService;
         }
 
         public void OnLoadCompleted(object sender, NavigationEventArgs e)
         {
-            SetFrameDataContext();
+            BindDataContextToPage();
         }
 
         public void OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            SetFrameDataContext();
+            BindDataContextToPage();
         }
 
-        private void SetFrameDataContext()
+        private void BindDataContextToPage()
         {
-            FrameworkElement content = OrderInterface.Content as FrameworkElement;
-            if (content == null) return;
-            content.DataContext = OrderInterface.DataContext;
+            if(OrderInterface.Content is FrameworkElement element)
+            {
+                element.DataContext = OrderInterface.DataContext;
+            }
         }
     }
 }

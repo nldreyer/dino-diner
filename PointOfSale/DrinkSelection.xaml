@@ -40,10 +40,10 @@
                         <Setter Property="Margin" Value="0,0,0,10" />
                     </Style>
                 </Grid.Resources>
-                <Button Grid.Row="0" Click="Button_Click">Sodasaurus</Button>
-                <Button Grid.Row="1">Tyrannotea</Button>
-                <Button Grid.Row="2">Jurassic Java</Button>
-                <Button Grid.Row="3">Water</Button>
+                <Button Name="BtnAddSodasaurus" Grid.Row="0" Click="AddSodasaurus">Sodasaurus</Button>
+                <Button Name="BtnAddTyrannotea" Grid.Row="1" Click="AddTyrannotea">Tyrannotea</Button>
+                <Button Name="BtnAddJurassicJava" Grid.Row="2" Click="AddJurassicJava">Jurassic Java</Button>
+                <Button Name="BtnAddWater" Grid.Row="3" Click="AddWater">Water</Button>
             </Grid>
         </DockPanel>
         <DockPanel Grid.Column="3" Grid.Row="2">
@@ -58,9 +58,9 @@
                         <Setter Property="Margin" Value="0,0,0,10" />
                     </Style>
                 </Grid.Resources>
-                <Button Grid.Row="0" IsEnabled="False">Small</Button>
-                <Button Grid.Row="1" IsEnabled="False">Medium</Button>
-                <Button Grid.Row="2" IsEnabled="False">Large</Button>
+                <Button Name="BtnPickSmall" Grid.Row="0" IsEnabled="False">Small</Button>
+                <Button Name="BtnPickMedium" Grid.Row="1" IsEnabled="False">Medium</Button>
+                <Button Name="BtnPickLarge" Grid.Row="2" IsEnabled="False">Large</Button>
             </Grid>
         </DockPanel>
         <DockPanel Grid.Column="5" Grid.Row="2">
@@ -75,9 +75,9 @@
                         <Setter Property="Margin" Value="0,0,0,10" />
                     </Style>
                 </Grid.Resources>
-                <Button Grid.Row="0" Click="SelectFlavor" IsEnabled="False">Sweet/Decaf/Flavor</Button>
-                <Button Grid.Row="1" IsEnabled="False">Add Lemon</Button>
-                <Button Grid.Row="2" IsEnabled="False">Hold Ice</Button>
+                <Button Name="BtnSweetDecafFlavorSpecial" Grid.Row="0" Click="SelectFlavor" IsEnabled="False">Sweet/Decaf/Flavor</Button>
+                <Button Name="BtnLemonSpecial" Grid.Row="1" IsEnabled="False">Add Lemon</Button>
+                <Button Name="BtnIceSpecial" Grid.Row="2" IsEnabled="False">Add/Hold Ice</Button>
             </Grid>
         </DockPanel>
     </Grid>

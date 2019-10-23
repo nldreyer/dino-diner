@@ -12,12 +12,24 @@ namespace PointOfSale
     /// </summary>
     public partial class SideSelection : Page
     {
+        public Side Side { get; set; }
+
         /// <summary>
-        /// SideSelection constructor
+        /// SideSelection blank constructor
         /// </summary>
         public SideSelection()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// SideSelection constructor with existing side
+        /// </summary>
+        /// <param name="side"></param>
+        public SideSelection(Side side)
+        {
+            InitializeComponent();
+            this.Side = side;
         }
 
         /// <summary>
@@ -27,9 +39,7 @@ namespace PointOfSale
         /// <param name="e">Event args</param>
         private void AddFryceritops(object sender, RoutedEventArgs e)
         {
-            Order order = (Order)DataContext;
-            order.Items.Add(new Fryceritops());
-            SideClicked();
+            SideClicked(new Fryceritops());
         }
 
         /// <summary>
@@ -39,9 +49,7 @@ namespace PointOfSale
         /// <param name="e">Event args</param>
         private void AddMeteorMacAndCheese(object sender, RoutedEventArgs e)
         {
-            Order order = (Order)DataContext;
-            order.Items.Add(new MeteorMacAndCheese());
-            SideClicked();
+            SideClicked(new MeteorMacAndCheese());
         }
 
         /// <summary>
@@ -51,9 +59,7 @@ namespace PointOfSale
         /// <param name="e">Event args</param>
         private void AddMezzorellaSticks(object sender, RoutedEventArgs e)
         {
-            Order order = (Order)DataContext;
-            order.Items.Add(new MezzorellaSticks());
-            SideClicked();
+            SideClicked(new MezzorellaSticks());
         }
 
         /// <summary>
@@ -63,9 +69,7 @@ namespace PointOfSale
         /// <param name="e">Event args</param>
         private void AddTriceritots(object sender, RoutedEventArgs e)
         {
-            Order order = (Order)DataContext;
-            order.Items.Add(new Triceritots());
-            SideClicked();
+            SideClicked(new Triceritots());
         }
 
         /// <summary>
@@ -75,7 +79,7 @@ namespace PointOfSale
         /// <param name="e">Event args</param>
         private void BtnClickSmall(object sender, RoutedEventArgs e)
         {
-
+            SelectSize(DinoDiner.Menu.Size.Small);
         }
 
         /// <summary>
@@ -85,7 +89,7 @@ namespace PointOfSale
         /// <param name="e">Event args</param>
         private void BtnClickMedium(object sender, RoutedEventArgs e)
         {
-
+            SelectSize(DinoDiner.Menu.Size.Medium);
         }
 
         /// <summary>
@@ -95,21 +99,39 @@ namespace PointOfSale
         /// <param name="e">Event args</param>
         private void BtnClickLarge(object sender, RoutedEventArgs e)
         {
-
+            SelectSize(DinoDiner.Menu.Size.Large);
         }
 
         /// <summary>
         /// Disables all side buttons and enables size selection buttons
         /// </summary>
-        private void SideClicked()
+        /// <param name="side">Side to be added to order</param>
+        private void SideClicked(Side side)
         {
-            BtnAddFryceritops.IsEnabled = false;
-            BtnAddMeteorMacAndCheese.IsEnabled = false;
-            BtnAddMezzorellaSticks.IsEnabled = false;
-            BtnAddTriceritots.IsEnabled = false;
-            BtnPickSmall.IsEnabled = true;
-            BtnPickMedium.IsEnabled = true;
-            BtnPickLarge.IsEnabled = true;
+            if (DataContext is Order order)
+            {
+                order.Items.Add(side);
+                this.Side = side;
+                BtnAddFryceritops.IsEnabled = false;
+                BtnAddMeteorMacAndCheese.IsEnabled = false;
+                BtnAddMezzorellaSticks.IsEnabled = false;
+                BtnAddTriceritots.IsEnabled = false;
+                BtnPickSmall.IsEnabled = true;
+                BtnPickMedium.IsEnabled = true;
+                BtnPickLarge.IsEnabled = true;
+            }
+        }
+
+        /// <summary>
+        /// Changes side size
+        /// </summary>
+        /// <param name="size">Size to be changed to</param>
+        private void SelectSize(DinoDiner.Menu.Size size)
+        {
+            if (Side != null)
+            {
+                this.Side.Size = size;
+            }
         }
     }
 }
