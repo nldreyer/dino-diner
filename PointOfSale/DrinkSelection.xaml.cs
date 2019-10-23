@@ -29,6 +29,36 @@ namespace PointOfSale
         }
 
         /// <summary>
+        /// Make drink small
+        /// </summary>
+        /// <param name="sender">Button clicked</param>
+        /// <param name="e">Event args</param>
+        private void BtnClickSmall(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Make drink medium
+        /// </summary>
+        /// <param name="sender">Button clicked</param>
+        /// <param name="e">Event args</param>
+        private void BtnClickMedium(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Make drink large
+        /// </summary>
+        /// <param name="sender">Button clicked</param>
+        /// <param name="e">Event args</param>
+        private void BtnClickLarge(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        /// <summary>
         /// Navigates to FlavorSelection.xaml
         /// </summary>
         /// <param name="sender">Button that was pressed.</param>
@@ -36,6 +66,11 @@ namespace PointOfSale
         private void SelectFlavor(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new FlavorSelection());
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

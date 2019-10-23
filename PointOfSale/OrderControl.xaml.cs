@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DinoDiner.Menu;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,11 @@ namespace PointOfSale
         public OrderControl()
         {
             InitializeComponent();
+        }
+
+        private void BtnCancelClick(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

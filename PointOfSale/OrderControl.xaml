@@ -13,7 +13,7 @@
             <RowDefinition Height="20"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
-        <TextBox Text="Order" Grid.Row="0" TextAlignment="Center" BorderThickness="1" BorderBrush="Black"/>
+        <TextBox Text="Order" Grid.Row="0" TextAlignment="Center" BorderThickness="1" BorderBrush="Black" IsReadOnly="True"/>
         <ListBox Grid.Row="1" ItemsSource="{Binding Path=Items}" BorderThickness="1" BorderBrush="Black">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -26,10 +26,17 @@
         </ListBox>
         <Border Grid.Row="2" BorderThickness="1" BorderBrush="Black">
             <StackPanel Orientation="Horizontal">
-                <TextBox Text="Price: $" BorderThickness="0" Width="40"/>
+                <TextBox Text="Price: $" BorderThickness="0" Width="40" IsReadOnly="True"/>
                 <TextBox Text="MONEY" BorderThickness="0" Width="160"/>
             </StackPanel>
         </Border>
-        <TextBox Text="Buttons Go Here" Grid.Row="3" BorderThickness="1" BorderBrush="Black"/>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Click="BtnCancelClick">Cancel</Button>
+            <Button Grid.Column="1">Finish</Button>
+        </Grid>
     </Grid>
 </UserControl>

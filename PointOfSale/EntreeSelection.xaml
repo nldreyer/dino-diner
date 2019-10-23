@@ -27,43 +27,43 @@
                     <Setter Property="Margin" Value="10" />
                 </Style>
             </WrapPanel.Resources>
-            <Button VerticalContentAlignment="Bottom">
+            <Button x:Name="BtnAddBrontowurst" VerticalContentAlignment="Bottom" Click="AddBrontowurst">
                 <Button.Background>
                     <ImageBrush ImageSource="Assets/DinoDiner-01.png"></ImageBrush>
                 </Button.Background>
                 Brontowurst
             </Button>
-            <Button VerticalContentAlignment="Bottom">
+            <Button x:Name="BtnAddDinoBuggets" VerticalContentAlignment="Bottom" Click="AddDinoNuggets">
                 <Button.Background>
                     <ImageBrush ImageSource="Assets/DinoDiner-02.png"></ImageBrush>
                 </Button.Background>
                 Dino-Nuggets
             </Button>
-            <Button VerticalContentAlignment="Bottom">
+            <Button x:Name="BtnAddSteakosaurus" VerticalContentAlignment="Bottom" Click="AddSteakosaurus">
                 <Button.Background>
                     <ImageBrush ImageSource="Assets/DinoDiner-05.png"></ImageBrush>
                 </Button.Background>
                 Steakosaurus
             </Button>
-            <Button VerticalContentAlignment="Bottom">
+            <Button x:Name="BtnAddTRexKingBurger" VerticalContentAlignment="Bottom" Click="AddTRexKingBurger">
                 <Button.Background>
                     <ImageBrush ImageSource="Assets/DinoDiner-06.png"></ImageBrush>
                 </Button.Background>
                 T-Rex King Burger
             </Button>
-            <Button VerticalContentAlignment="Bottom">
+            <Button x:Name="BtnAddPterodactylWings" VerticalContentAlignment="Bottom" Click="AddPterodactylWings">
                 <Button.Background>
                     <ImageBrush ImageSource="Assets/DinoDiner-04.png"></ImageBrush>
                 </Button.Background>
                 Pterodactyl Wings
             </Button>
-            <Button VerticalContentAlignment="Bottom">
+            <Button x:Name="BtnAddPrehistoricPBJ" VerticalContentAlignment="Bottom" Click="AddPrehistoricPBJ">
                 <Button.Background>
                     <ImageBrush ImageSource="Assets/DinoDiner-03.png"></ImageBrush>
                 </Button.Background>
                 Prehistoric PB&amp;J
             </Button>
-            <Button VerticalContentAlignment="Bottom">
+            <Button x:Name="BtnAddVelociwrap" VerticalContentAlignment="Bottom" Click="AddVelociWrap">
                 <Button.Background>
                     <ImageBrush ImageSource="Assets/DinoDiner-07.png"></ImageBrush>
                 </Button.Background>
