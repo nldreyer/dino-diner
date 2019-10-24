@@ -58,9 +58,9 @@
                         <Setter Property="Margin" Value="0,0,0,10" />
                     </Style>
                 </Grid.Resources>
-                <Button Name="BtnPickSmall" Grid.Row="0" IsEnabled="False">Small</Button>
-                <Button Name="BtnPickMedium" Grid.Row="1" IsEnabled="False">Medium</Button>
-                <Button Name="BtnPickLarge" Grid.Row="2" IsEnabled="False">Large</Button>
+                <Button Name="BtnPickSmall" Grid.Row="0" IsEnabled="False" Click="BtnClickSmall">Small</Button>
+                <Button Name="BtnPickMedium" Grid.Row="1" IsEnabled="False" Click="BtnClickMedium">Medium</Button>
+                <Button Name="BtnPickLarge" Grid.Row="2" IsEnabled="False" Click="BtnClickLarge">Large</Button>
             </Grid>
         </DockPanel>
         <DockPanel Grid.Column="5" Grid.Row="2">

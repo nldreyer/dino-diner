@@ -33,6 +33,9 @@ namespace PointOfSale
             this.Drink = drink;
             DisableDrinkButtons();
             EnableSizeButtons();
+            BtnIceSpecial.IsEnabled = true;
+            BtnSweetDecafFlavorSpecial.IsEnabled = true;
+            BtnIceSpecial.Content = "Hold Ice";
             if (drink.Description.Contains("Sodasaurus"))
             {
                 BtnSweetDecafFlavorSpecial.Content = "Flavor";
@@ -189,6 +192,11 @@ namespace PointOfSale
             BtnPickSmall.IsEnabled = true;
             BtnPickMedium.IsEnabled = true;
             BtnPickLarge.IsEnabled = true;
+        }
+
+        private void AddLemon()
+        {
+
         }
     }
 }
