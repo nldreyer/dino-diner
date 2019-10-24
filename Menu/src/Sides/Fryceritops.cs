@@ -2,6 +2,7 @@
 *   Author: Nicholas Dreyer
 */
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 
 namespace DinoDiner.Menu
@@ -72,6 +73,7 @@ namespace DinoDiner.Menu
                 OnPropertyChanged("Price");
                 OnPropertyChanged("Calories");
                 OnPropertyChanged("Size");
+                OnPropertyChanged("Description");
             }
         }
 

@@ -30,6 +30,8 @@ namespace PointOfSale
         {
             InitializeComponent();
             this.Side = side;
+            DisableSideButtons();
+            EnableSizeButtons();
         }
 
         /// <summary>
@@ -112,13 +114,8 @@ namespace PointOfSale
             {
                 order.Items.Add(side);
                 this.Side = side;
-                BtnAddFryceritops.IsEnabled = false;
-                BtnAddMeteorMacAndCheese.IsEnabled = false;
-                BtnAddMezzorellaSticks.IsEnabled = false;
-                BtnAddTriceritots.IsEnabled = false;
-                BtnPickSmall.IsEnabled = true;
-                BtnPickMedium.IsEnabled = true;
-                BtnPickLarge.IsEnabled = true;
+                DisableSideButtons();
+                EnableSizeButtons();
             }
         }
 
@@ -132,6 +129,27 @@ namespace PointOfSale
             {
                 this.Side.Size = size;
             }
+        }
+
+        /// <summary>
+        /// Helper method to disable the side buttons
+        /// </summary>
+        private void DisableSideButtons()
+        {
+            BtnAddFryceritops.IsEnabled = false;
+            BtnAddMeteorMacAndCheese.IsEnabled = false;
+            BtnAddMezzorellaSticks.IsEnabled = false;
+            BtnAddTriceritots.IsEnabled = false;
+        }
+
+        /// <summary>
+        /// Helper method to enable size selection buttons
+        /// </summary>
+        private void EnableSizeButtons()
+        {
+            BtnPickSmall.IsEnabled = true;
+            BtnPickMedium.IsEnabled = true;
+            BtnPickLarge.IsEnabled = true;
         }
     }
 }

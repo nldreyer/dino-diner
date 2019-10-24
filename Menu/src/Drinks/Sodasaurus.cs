@@ -73,6 +73,7 @@ namespace DinoDiner.Menu
                 OnPropertyChanged("Price");
                 OnPropertyChanged("Calories");
                 OnPropertyChanged("Size");
+                OnPropertyChanged("Description");
             }
         }
 

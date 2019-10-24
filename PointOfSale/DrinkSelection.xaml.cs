@@ -31,6 +31,27 @@ namespace PointOfSale
         {
             InitializeComponent();
             this.Drink = drink;
+            DisableDrinkButtons();
+            EnableSizeButtons();
+            if (drink.Description.Contains("Sodasaurus"))
+            {
+                BtnSweetDecafFlavorSpecial.Content = "Flavor";
+            }
+            else if (drink.Description.Contains("Tyrannotea"))
+            {
+                BtnSweetDecafFlavorSpecial.Content = "Sweet";
+                BtnLemonSpecial.IsEnabled = true;
+            }
+            else if (drink.Description.Contains("Jurassic Java"))
+            {
+                BtnIceSpecial.Content = "Add Ice";
+                BtnSweetDecafFlavorSpecial.Content = "Decaf";
+            }
+            else if (drink.Description.Contains("Water"))
+            {
+                BtnSweetDecafFlavorSpecial.IsEnabled = false;
+                BtnLemonSpecial.IsEnabled = true;
+            }
         }
 
         /// <summary>
@@ -129,17 +150,12 @@ namespace PointOfSale
             if (DataContext is Order order)
             {
                 order.Items.Add(drink);
+                DisableDrinkButtons();
+                EnableSizeButtons();
+                BtnIceSpecial.IsEnabled = true;
+                BtnSweetDecafFlavorSpecial.IsEnabled = true;
+                BtnIceSpecial.Content = "Hold Ice";
             }
-            BtnAddSodasaurus.IsEnabled = false;
-            BtnAddTyrannotea.IsEnabled = false;
-            BtnAddJurassicJava.IsEnabled = false;
-            BtnAddWater.IsEnabled = false;
-            BtnPickSmall.IsEnabled = true;
-            BtnPickMedium.IsEnabled = true;
-            BtnPickLarge.IsEnabled = true;
-            BtnIceSpecial.IsEnabled = true;
-            BtnSweetDecafFlavorSpecial.IsEnabled = true;
-            BtnIceSpecial.Content = "Hold Ice";
         }
 
         /// <summary>
@@ -152,6 +168,27 @@ namespace PointOfSale
             {
                 this.Drink.Size = size;
             }
+        }
+
+        /// <summary>
+        /// Helper method to disable the drink buttons
+        /// </summary>
+        private void DisableDrinkButtons()
+        {
+            BtnAddJurassicJava.IsEnabled = false;
+            BtnAddSodasaurus.IsEnabled = false;
+            BtnAddTyrannotea.IsEnabled = false;
+            BtnAddWater.IsEnabled = false;
+        }
+
+        /// <summary>
+        /// Helper method to enable size selection buttons
+        /// </summary>
+        private void EnableSizeButtons()
+        {
+            BtnPickSmall.IsEnabled = true;
+            BtnPickMedium.IsEnabled = true;
+            BtnPickLarge.IsEnabled = true;
         }
     }
 }

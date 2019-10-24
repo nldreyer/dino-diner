@@ -78,18 +78,19 @@ namespace DinoDiner.Menu
             get { return sweet; }
             set
             {
-                sweet = value;
-                if (sweet)
+                if (value && !sweet)
                 {
                     this.Calories *= 2;
                 }
-                else
+                else if (sweet && !value)
                 {
                     this.Calories /= 2;
                 }
+                sweet = value;
                 OnPropertyChanged("Calories");
                 OnPropertyChanged("Ingredients");
                 OnPropertyChanged("Special");
+                OnPropertyChanged("Description");
             }
         }
 

@@ -38,6 +38,7 @@ namespace DinoDiner.Menu
             set
             {
                 OnPropertyChanged("Size");
+                OnPropertyChanged("Description");
                 size = value;
             }
         }
