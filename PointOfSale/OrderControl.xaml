@@ -10,7 +10,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
             <RowDefinition/>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <TextBox Text="Order" Grid.Row="0" TextAlignment="Center" BorderThickness="1" BorderBrush="Black" IsReadOnly="True"/>
@@ -18,17 +18,37 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <TextBlock Text="{Binding Path=Description}"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="165"/>
+                                <ColumnDefinition Width="20"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Foreground="Black" Text="{Binding Path=Description}"/>
+                            <Button Grid.Column="1" Click="OnRemoveItem" Background="Red" Foreground="White">X</Button>
+                        </Grid>
                         <ListBox ItemsSource="{Binding Path=Special}" BorderThickness="0"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
         <Border Grid.Row="2" BorderThickness="1" BorderBrush="Black">
-            <StackPanel Orientation="Horizontal">
-                <TextBox Text="Price: $" BorderThickness="0" Width="40" IsReadOnly="True"/>
-                <TextBox Text="MONEY" BorderThickness="0" Width="160"/>
-            </StackPanel>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Row="0" Grid.Column="0" Text="Subtotal: $" BorderThickness="0" IsReadOnly="True" TextAlignment="Right"/>
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=SubtotalCost, Mode=OneWay}" BorderThickness="0"/>
+                <TextBox Grid.Row="1" Grid.Column="0" Text="Sales Tax: $" BorderThickness="0" IsReadOnly="True" TextAlignment="Right"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Path=SalesTaxCost, Mode=OneWay}" BorderThickness="0"/>
+                <TextBox Grid.Row="2" Grid.Column="0" Text="Total: $" BorderThickness="0" IsReadOnly="True" TextAlignment="Right"/>
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=TotalCost, Mode=OneWay}" BorderThickness="0"/>
+            </Grid>
         </Border>
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>

@@ -28,9 +28,7 @@ namespace PointOfSale
         /// <param name="e">Event args</param>
         private void AddBrontowurst(object sender, RoutedEventArgs e)
         {
-            Order order = (Order)DataContext;
-            order.Items.Add(new Brontowurst());
-            NavigationService.Navigate(new MenuCategorySelection());
+            EntreeClicked(new Brontowurst());
         }
 
         /// <summary>
@@ -40,9 +38,7 @@ namespace PointOfSale
         /// <param name="e">Event args</param>
         private void AddDinoNuggets(object sender, RoutedEventArgs e)
         {
-            Order order = (Order)DataContext;
-            order.Items.Add(new DinoNuggets());
-            NavigationService.Navigate(new MenuCategorySelection());
+            EntreeClicked(new DinoNuggets());
         }
 
         /// <summary>
@@ -52,9 +48,7 @@ namespace PointOfSale
         /// <param name="e">Event args</param>
         private void AddSteakosaurus(object sender, RoutedEventArgs e)
         {
-            Order order = (Order)DataContext;
-            order.Items.Add(new SteakosaurusBurger());
-            NavigationService.Navigate(new MenuCategorySelection());
+            EntreeClicked(new SteakosaurusBurger());
         }
 
         /// <summary>
@@ -64,9 +58,7 @@ namespace PointOfSale
         /// <param name="e">Event args</param>
         private void AddTRexKingBurger(object sender, RoutedEventArgs e)
         {
-            Order order = (Order)DataContext;
-            order.Items.Add(new TRexKingBurger());
-            NavigationService.Navigate(new MenuCategorySelection());
+            EntreeClicked(new TRexKingBurger());
         }
 
         /// <summary>
@@ -76,9 +68,7 @@ namespace PointOfSale
         /// <param name="e">Event args</param>
         private void AddPterodactylWings(object sender, RoutedEventArgs e)
         {
-            Order order = (Order)DataContext;
-            order.Items.Add(new PterodactylWings());
-            NavigationService.Navigate(new MenuCategorySelection());
+            EntreeClicked(new PterodactylWings());
         }
 
         /// <summary>
@@ -88,9 +78,7 @@ namespace PointOfSale
         /// <param name="e">Event args</param>
         private void AddPrehistoricPBJ(object sender, RoutedEventArgs e)
         {
-            Order order = (Order)DataContext;
-            order.Items.Add(new PrehistoricPBJ());
-            NavigationService.Navigate(new MenuCategorySelection());
+            EntreeClicked(new PrehistoricPBJ());
         }
 
         /// <summary>
@@ -100,9 +88,16 @@ namespace PointOfSale
         /// <param name="e">Event args</param>
         private void AddVelociWrap(object sender, RoutedEventArgs e)
         {
-            Order order = (Order)DataContext;
-            order.Items.Add(new VelociWrap());
-            NavigationService.Navigate(new MenuCategorySelection());
+            EntreeClicked(new VelociWrap());
+        }
+
+        private void EntreeClicked(Entree entree)
+        {
+            if (DataContext is Order order)
+            {
+                order.Add(entree);
+                NavigationService.Navigate(new MenuCategorySelection());
+            }
         }
     }
 }

@@ -112,7 +112,7 @@ namespace PointOfSale
         {
             if (DataContext is Order order)
             {
-                order.Items.Add(side);
+                order.Add(side);
                 this.Side = side;
                 DisableSideButtons();
                 EnableSizeButtons();

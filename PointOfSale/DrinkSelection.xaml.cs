@@ -152,7 +152,7 @@ namespace PointOfSale
         {
             if (DataContext is Order order)
             {
-                order.Items.Add(drink);
+                order.Add(drink);
                 DisableDrinkButtons();
                 EnableSizeButtons();
                 BtnIceSpecial.IsEnabled = true;

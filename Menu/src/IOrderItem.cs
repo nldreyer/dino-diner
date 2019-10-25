@@ -2,9 +2,11 @@
 *   Author: Nicholas Dreyer
 */
 
+using System.ComponentModel;
+
 namespace DinoDiner.Menu
 {
-    public interface IOrderItem
+    public interface IOrderItem : INotifyPropertyChanged
     {
         /// <summary>
         /// Gets price

@@ -2,11 +2,17 @@
 *   Author: Nicholas Dreyer
 */
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
-    public abstract class Drink : IMenuItem
+    public abstract class Drink : IMenuItem, INotifyPropertyChanged
     {
+        /// <summary>
+        /// Notify of a property change
+        /// </summary>
+        public abstract event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
         /// Gets and sets the price
         /// </summary>

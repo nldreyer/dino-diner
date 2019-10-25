@@ -15,7 +15,7 @@ namespace DinoDiner.Menu
         /// <summary>
         /// Notify of a property change; For price, ingredients, and special
         /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
+        public override event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
         /// Invoke a changed property notification
