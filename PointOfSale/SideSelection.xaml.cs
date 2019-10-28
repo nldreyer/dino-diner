@@ -128,6 +128,7 @@ namespace PointOfSale
             if (Side != null)
             {
                 this.Side.Size = size;
+                NavigationService.Navigate(new MenuCategorySelection());
             }
         }
 
