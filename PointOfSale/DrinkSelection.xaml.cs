@@ -153,6 +153,7 @@ namespace PointOfSale
             if (DataContext is Order order)
             {
                 order.Add(drink);
+                this.Drink = drink;
                 DisableDrinkButtons();
                 EnableSizeButtons();
                 BtnIceSpecial.IsEnabled = true;
@@ -194,9 +195,19 @@ namespace PointOfSale
             BtnPickLarge.IsEnabled = true;
         }
 
+        /// <summary>
+        /// Helper method to add lemon
+        /// </summary>
         private void AddLemon()
         {
-
+            if (this.Drink is Water water)
+            {
+                water.AddLemon();
+            }
+            else if (this.Drink is Tyrannotea tt)
+            {
+                tt.AddLemon();
+            }
         }
     }
 }

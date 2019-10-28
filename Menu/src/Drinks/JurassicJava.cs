@@ -10,7 +10,7 @@ namespace DinoDiner.Menu
     {
         // Backing variables
         private bool roomForCream = false;
-        public bool Decaf = false;
+        private bool decaf = false;
         private Size size;
 
         /// <summary>
@@ -46,6 +46,22 @@ namespace DinoDiner.Menu
             get
             {
                 return new List<string>() { "Water", "Coffee" };
+            }
+        }
+
+        /// <summary>
+        /// Gets and sets Decaf property and notifies on change
+        /// </summary>
+        public bool Decaf
+        {
+            get
+            {
+                return decaf;
+            }
+            set
+            {
+                decaf = value;
+                OnPropertyChanged("Description");
             }
         }
 
