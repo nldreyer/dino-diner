@@ -29,13 +29,13 @@
                     <Setter Property="Margin" Value="10" />
                 </Style>
             </WrapPanel.Resources>
-            <Button>Cherry</Button>
-            <Button>Chocolate</Button>
-            <Button>Cola</Button>
-            <Button>Lime</Button>
-            <Button>Orange</Button>
-            <Button>Root Beer</Button>
-            <Button>Vanilla</Button>
+            <Button Click="ClickFlavor" Name="BtnCherry">Cherry</Button>
+            <Button Click="ClickFlavor" Name="BtnChocolate">Chocolate</Button>
+            <Button Click="ClickFlavor" Name="BtnCola">Cola</Button>
+            <Button Click="ClickFlavor" Name="BtnLime">Lime</Button>
+            <Button Click="ClickFlavor" Name="BtnOrange">Orange</Button>
+            <Button Click="ClickFlavor" Name="BtnRootBeer">Root Beer</Button>
+            <Button Click="ClickFlavor" Name="BtnVanilla">Vanilla</Button>
         </WrapPanel>
     </Grid>
 </Page>

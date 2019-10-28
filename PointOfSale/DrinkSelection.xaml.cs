@@ -26,7 +26,7 @@ namespace PointOfSale
         /// <summary>
         /// DrinkSelection constructor with existing drink
         /// </summary>
-        /// <param name="side"></param>
+        /// <param name="drink">Drink to modify</param>
         public DrinkSelection(Drink drink)
         {
             InitializeComponent();
@@ -141,7 +141,18 @@ namespace PointOfSale
         /// <param name="e">Event arguments.</param>
         private void SelectFlavor(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new FlavorSelection());
+            if (this.Drink is Sodasaurus ss)
+            {
+                NavigationService.Navigate(new FlavorSelection(ss));
+            }
+            else if (this.Drink is Tyrannotea tt)
+            {
+                tt.Sweet = true;
+            }
+            else if (this.Drink is JurassicJava jj)
+            {
+                jj.Decaf = true;
+            }
         }
 
         /// <summary>
@@ -175,14 +186,28 @@ namespace PointOfSale
         }
 
         /// <summary>
-        /// Helper method to disable the drink buttons
+        /// Navigates back to menu category selection page
+        /// </summary>
+        /// <param name="sender">Button that was pressed.</param>
+        /// <param name="e">Event arguments.</param>
+        private void BtnClickDone(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new MenuCategorySelection());
+        }
+
+        /// <summary>
+        /// Helper method to disable the drink buttons and display done button
         /// </summary>
         private void DisableDrinkButtons()
         {
-            BtnAddJurassicJava.IsEnabled = false;
-            BtnAddSodasaurus.IsEnabled = false;
-            BtnAddTyrannotea.IsEnabled = false;
-            BtnAddWater.IsEnabled = false;
+            BtnAddJurassicJava.Visibility = System.Windows.Visibility.Hidden;
+            BtnAddSodasaurus.Visibility = System.Windows.Visibility.Hidden;
+            BtnAddTyrannotea.Visibility = System.Windows.Visibility.Hidden;
+            BtnAddWater.Visibility = System.Windows.Visibility.Hidden;
+            LeftBtnColumnLabel.Content = "";
+            var b = new Button() { Content = "Done" };
+            b.Click += BtnClickDone;
+            LeftBtnColumn.Children.Add(b);
         }
 
         /// <summary>
@@ -196,9 +221,11 @@ namespace PointOfSale
         }
 
         /// <summary>
-        /// Helper method to add lemon
+        /// Adds lemon
         /// </summary>
-        private void AddLemon()
+        /// <param name="sender">Button that was pressed.</param>
+        /// <param name="e">Event arguments.</param>
+        private void AddLemon(object sender, RoutedEventArgs e)
         {
             if (this.Drink is Water water)
             {
@@ -207,6 +234,31 @@ namespace PointOfSale
             else if (this.Drink is Tyrannotea tt)
             {
                 tt.AddLemon();
+            }
+        }
+
+        /// <summary>
+        /// Modifies ice specialty
+        /// </summary>
+        /// <param name="sender">Button that was pressed.</param>
+        /// <param name="e">Event arguments.</param>
+        private void ModifyIce(object sender, RoutedEventArgs e)
+        {
+            if (this.Drink is Water water)
+            {
+                water.HoldIce();
+            }
+            else if (this.Drink is Tyrannotea tt)
+            {
+                tt.HoldIce();
+            }
+            else if (this.Drink is JurassicJava jj)
+            {
+                jj.AddIce();
+            }
+            else if (this.Drink is Sodasaurus ss)
+            {
+                ss.HoldIce();
             }
         }
     }

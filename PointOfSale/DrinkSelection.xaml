@@ -24,11 +24,11 @@
             <RowDefinition/>
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
-        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1">Drink</Label>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" Name="LeftBtnColumnLabel">Drink</Label>
         <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3" Grid.Row="1">Size</Label>
         <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="5" Grid.Row="1">Special</Label>
         <DockPanel Grid.Column="1" Grid.Row="2">
-            <Grid Margin="0">
+            <Grid Margin="0" Name="LeftBtnColumn">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
@@ -76,8 +76,8 @@
                     </Style>
                 </Grid.Resources>
                 <Button Name="BtnSweetDecafFlavorSpecial" Grid.Row="0" Click="SelectFlavor" IsEnabled="False">Sweet/Decaf/Flavor</Button>
-                <Button Name="BtnLemonSpecial" Grid.Row="1" IsEnabled="False">Add Lemon</Button>
-                <Button Name="BtnIceSpecial" Grid.Row="2" IsEnabled="False">Add/Hold Ice</Button>
+                <Button Name="BtnLemonSpecial" Click="AddLemon" Grid.Row="1" IsEnabled="False">Add Lemon</Button>
+                <Button Name="BtnIceSpecial" Click="ModifyIce" Grid.Row="2" IsEnabled="False">Add/Hold Ice</Button>
             </Grid>
         </DockPanel>
     </Grid>

@@ -87,6 +87,7 @@ namespace DinoDiner.Menu
             {
                 flavor = value;
                 OnPropertyChanged("Flavor");
+                OnPropertyChanged("Description");
             }
         }
 
@@ -105,6 +106,10 @@ namespace DinoDiner.Menu
         /// <returns>Menu Item String</returns>
         public override string ToString()
         {
+            if (Flavor == SodasaurusFlavor.RootBeer)
+            {
+                return $"{Size} Root Beer Sodasaurus";
+            }
             return $"{Size} {Flavor} Sodasaurus";
         }
 
