@@ -30,6 +30,33 @@ namespace PointOfSale
             {
                 NavigationService?.Navigate(new DrinkSelection(drink));
             }
+            else if (OrderItems.SelectedItem is Entree entree)
+            {
+                if (entree is Brontowurst bw)
+                {
+                    NavigationService?.Navigate(new CustomizeBrontowurst(bw));
+                }
+                if (entree is DinoNuggets dn)
+                {
+                    NavigationService?.Navigate(new CustomizeDinoNuggets(dn));
+                }
+                if (entree is PrehistoricPBJ pbj)
+                {
+                    NavigationService?.Navigate(new CustomizePBJ(pbj));
+                }
+                if (entree is SteakosaurusBurger sb)
+                {
+                    NavigationService?.Navigate(new CustomizeSteakosaurusBurger(sb));
+                }
+                if (entree is TRexKingBurger kb)
+                {
+                    NavigationService?.Navigate(new CustomizeTRexKingBurger(kb));
+                }
+                if (entree is VelociWrap vw)
+                {
+                    NavigationService?.Navigate(new CustomizeVelociWrap(vw));
+                }
+            }
         }
 
         private void BtnCancelClick(object sender, RoutedEventArgs e)
