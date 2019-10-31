@@ -24,10 +24,10 @@
             <RowDefinition/>
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
-        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1">Side</Label>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" Name="LeftBtnColumnLabel">Side</Label>
         <Label HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3" Grid.Row="1">Size</Label>
         <DockPanel Grid.Column="1" Grid.Row="2">
-            <Grid Margin="0">
+            <Grid Margin="0" Name="LeftBtnColumn">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>

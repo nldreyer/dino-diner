@@ -4,6 +4,7 @@
 using DinoDiner.Menu;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Navigation;
 
 namespace PointOfSale
@@ -205,8 +206,9 @@ namespace PointOfSale
             BtnAddTyrannotea.Visibility = System.Windows.Visibility.Hidden;
             BtnAddWater.Visibility = System.Windows.Visibility.Hidden;
             LeftBtnColumnLabel.Content = "";
-            var b = new Button() { Content = "Done" };
+            var b = new Button() { Content = "Done"};
             b.Click += BtnClickDone;
+            b.Background = Brushes.LightGreen;
             LeftBtnColumn.Children.Add(b);
         }
 

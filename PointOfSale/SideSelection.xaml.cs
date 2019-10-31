@@ -3,6 +3,7 @@
 */
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using DinoDiner.Menu;
 
 namespace PointOfSale
@@ -133,14 +134,29 @@ namespace PointOfSale
         }
 
         /// <summary>
+        /// Navigates back to menu category selection page
+        /// </summary>
+        /// <param name="sender">Button that was pressed.</param>
+        /// <param name="e">Event arguments.</param>
+        private void BtnClickDone(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new MenuCategorySelection());
+        }
+
+        /// <summary>
         /// Helper method to disable the side buttons
         /// </summary>
         private void DisableSideButtons()
         {
-            BtnAddFryceritops.IsEnabled = false;
-            BtnAddMeteorMacAndCheese.IsEnabled = false;
-            BtnAddMezzorellaSticks.IsEnabled = false;
-            BtnAddTriceritots.IsEnabled = false;
+            BtnAddFryceritops.Visibility = System.Windows.Visibility.Hidden;
+            BtnAddMeteorMacAndCheese.Visibility = System.Windows.Visibility.Hidden;
+            BtnAddMezzorellaSticks.Visibility = System.Windows.Visibility.Hidden;
+            BtnAddTriceritots.Visibility = System.Windows.Visibility.Hidden;
+            LeftBtnColumnLabel.Content = "";
+            var b = new Button() { Content = "Done" };
+            b.Click += BtnClickDone;
+            b.Background = Brushes.LightGreen;
+            LeftBtnColumn.Children.Add(b);
         }
 
         /// <summary>
