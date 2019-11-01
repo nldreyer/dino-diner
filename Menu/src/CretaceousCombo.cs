@@ -91,12 +91,10 @@ namespace DinoDiner.Menu
             }
         }
 
-        private CretaceousCombo() { }
-
         /// <summary>
         /// Cretaceous combo constructor
         /// </summary>
-        /// <param name="entree"></param>
+        /// <param name="entree">Entree of the combo</param>
         public CretaceousCombo(Entree entree)
         {
             this.entree = entree;
@@ -117,6 +115,8 @@ namespace DinoDiner.Menu
                 Side.Size = value;
                 OnPropertyChanged("Price");
                 OnPropertyChanged("Calories");
+                OnPropertyChanged("Description");
+                OnPropertyChanged("Special");
             }
         }
 

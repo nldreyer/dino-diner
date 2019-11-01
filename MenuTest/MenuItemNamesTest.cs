@@ -158,7 +158,14 @@ namespace MenuTest
             Sodasaurus soda = new Sodasaurus();
             soda.Size = size;
             soda.Flavor = flavor;
-            Assert.Equal($"{size} {flavor} Sodasaurus", soda.ToString());
+            if (flavor != SodasaurusFlavor.RootBeer)
+            {
+                Assert.Equal($"{size} {flavor} Sodasaurus", soda.ToString());
+            }
+            else
+            {
+                Assert.Equal($"{size} Root Beer Sodasaurus", soda.ToString());
+            }
         }
 
         [Theory]

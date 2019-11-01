@@ -55,7 +55,7 @@ namespace DinoDiner.Menu
         {
             get
             {
-                return Math.Round(SalesTaxRate * SubtotalCost, 2, MidpointRounding.AwayFromZero);
+                return SalesTaxRate * SubtotalCost;
             }
         }
 
@@ -76,11 +76,6 @@ namespace DinoDiner.Menu
         public Order()
         {
             Items.CollectionChanged += OnCollectionChanged;
-            SteakosaurusBurger sb = new SteakosaurusBurger();
-            sb.HoldMustard();
-            Items.Add(sb);
-            Items.Add(new Fryceritops());
-            Items.Add(new Triceritots());
         }
 
         /// <summary>
@@ -93,12 +88,27 @@ namespace DinoDiner.Menu
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SubtotalCost"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SalesTaxCost"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TotalCost"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Items"));
         }
 
+        /// <summary>
+        /// Adds an item to the order
+        /// </summary>
+        /// <param name="item">Order item to add</param>
         public void Add(IOrderItem item)
         {
             item.PropertyChanged += OnCollectionChanged;
             Items.Add(item);
+        }
+
+        /// <summary>
+        /// Removes an item from the order
+        /// </summary>
+        /// <param name="item">Item to remove</param>
+        public void Remove(IOrderItem item)
+        {
+            item.PropertyChanged += OnCollectionChanged;
+            Items.Remove(item);
         }
     }
 }

@@ -1,20 +1,10 @@
 ﻿/*  ComboSelection.xaml.cs
 *   Author: Nicholas Dreyer
 */
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using DinoDiner.Menu;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PointOfSale
 {
@@ -23,6 +13,9 @@ namespace PointOfSale
     /// </summary>
     public partial class ComboSelection : Page
     {
+        /// <summary>
+        /// ComboSelection constructor
+        /// </summary>
         public ComboSelection()
         {
             InitializeComponent();
@@ -35,7 +28,17 @@ namespace PointOfSale
         /// <param name="e">Event arguments.</param>
         private void ComboSelected(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new CustomizeCombo());
+            if (sender is Button b)
+            {
+                if (b.Name.Equals("BtnBrontowurst"))
+                {
+                    if (DataContext is Order order)
+                    {
+                        CretaceousCombo cc = new CretaceousCombo(new Brontowurst());
+                        NavigationService.Navigate(new CustomizeCombo(cc));
+                    }
+                }
+            }
         }
     }
 }

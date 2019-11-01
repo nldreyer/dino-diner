@@ -1,20 +1,10 @@
 ﻿/*  CustomizeComboSelection.xaml.cs
 *   Author: Nicholas Dreyer
 */
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using DinoDiner.Menu;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PointOfSale
 {
@@ -23,9 +13,52 @@ namespace PointOfSale
     /// </summary>
     public partial class CustomizeCombo : Page
     {
-        public CustomizeCombo()
+        public CretaceousCombo combo;
+
+        /// <summary>
+        /// CustomizeCombo constructor
+        /// </summary>
+        public CustomizeCombo(CretaceousCombo combo)
         {
             InitializeComponent();
+            if (DataContext is Order order)
+            {
+                this.combo = combo;
+                order.Add(combo);
+            }
+        }
+
+        /// <summary>
+        /// Navigates to entree customization page
+        /// </summary>
+        /// <param name="sender">Button that was pressed.</param>
+        /// <param name="e">Event arguments.</param>
+        private void SelectEntree(object sender, RoutedEventArgs e)
+        {
+            if (combo.Entree is Brontowurst bw)
+            {
+                NavigationService?.Navigate(new CustomizeBrontowurst(bw));
+            }
+            if (combo.Entree is DinoNuggets dn)
+            {
+                NavigationService?.Navigate(new CustomizeDinoNuggets(dn));
+            }
+            if (combo.Entree is PrehistoricPBJ pbj)
+            {
+                NavigationService?.Navigate(new CustomizePBJ(pbj));
+            }
+            if (combo.Entree is SteakosaurusBurger sb)
+            {
+                NavigationService?.Navigate(new CustomizeSteakosaurusBurger(sb));
+            }
+            if (combo.Entree is TRexKingBurger kb)
+            {
+                NavigationService?.Navigate(new CustomizeTRexKingBurger(kb));
+            }
+            if (combo.Entree is VelociWrap vw)
+            {
+                NavigationService?.Navigate(new CustomizeVelociWrap(vw));
+            }
         }
 
         /// <summary>
