@@ -35,6 +35,7 @@ namespace PointOfSale
                     if (DataContext is Order order)
                     {
                         CretaceousCombo cc = new CretaceousCombo(new Brontowurst());
+                        order.Add(cc);
                         NavigationService.Navigate(new CustomizeCombo(cc));
                     }
                 }

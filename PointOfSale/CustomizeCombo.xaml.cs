@@ -21,11 +21,7 @@ namespace PointOfSale
         public CustomizeCombo(CretaceousCombo combo)
         {
             InitializeComponent();
-            if (DataContext is Order order)
-            {
-                this.combo = combo;
-                order.Add(combo);
-            }
+            this.combo = combo;
         }
 
         /// <summary>
@@ -37,7 +33,7 @@ namespace PointOfSale
         {
             if (combo.Entree is Brontowurst bw)
             {
-                NavigationService?.Navigate(new CustomizeBrontowurst(bw));
+                NavigationService?.Navigate(new CustomizeBrontowurst(bw), true);
             }
             if (combo.Entree is DinoNuggets dn)
             {

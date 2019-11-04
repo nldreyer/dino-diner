@@ -13,11 +13,12 @@ namespace PointOfSale
     /// </summary>
     public partial class CustomizeBrontowurst : Page
     {
-        // Backing variable
+        // Backing variables
         private Brontowurst bw;
+        private bool isComboCustomization = false;
 
         /// <summary>
-        /// CustomizeBrontowurst constructor
+        /// CustomizeBrontowurst regular constructor
         /// </summary>
         /// <param name="bw">Brontowurst to modify</param>
         public CustomizeBrontowurst(Brontowurst bw)
@@ -27,13 +28,31 @@ namespace PointOfSale
         }
 
         /// <summary>
+        /// CustomizeBrontowurst combo constructor
+        /// </summary>
+        /// <param name="bw">Brontowurst to modify</param>
+        public CustomizeBrontowurst(Brontowurst bw, bool isCombo)
+        {
+            InitializeComponent();
+            this.bw = bw;
+            this.isComboCustomization = isCombo;
+        }
+
+        /// <summary>
         /// Navigate back to menu category selection
         /// </summary>
         /// <param name="sender">Button clicked</param>
         /// <param name="e">Event args</param>
         private void BtnClickDone(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new MenuCategorySelection());
+            if (isComboCustomization)
+            {
+                NavigationService.GoBack();
+            }
+            else
+            {
+                NavigationService.Navigate(new MenuCategorySelection());
+            }
         }
 
         /// <summary>

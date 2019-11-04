@@ -57,6 +57,10 @@ namespace PointOfSale
                     NavigationService?.Navigate(new CustomizeVelociWrap(vw));
                 }
             }
+            else if (OrderItems.SelectedItem is CretaceousCombo cc)
+            {
+                NavigationService?.Navigate(new CustomizeCombo(cc));
+            }
         }
 
         private void BtnCancelClick(object sender, RoutedEventArgs e)
