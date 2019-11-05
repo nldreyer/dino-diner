@@ -14,6 +14,7 @@ namespace PointOfSale
     public partial class SideSelection : Page
     {
         public Side Side { get; set; }
+        private CretaceousCombo cc;
 
         /// <summary>
         /// SideSelection blank constructor
@@ -36,13 +37,34 @@ namespace PointOfSale
         }
 
         /// <summary>
+        /// SideSelection constructor with existing side inside of a combo
+        /// </summary>
+        /// <param name="side"></param>
+        public SideSelection(Side side, CretaceousCombo cc)
+        {
+            InitializeComponent();
+            this.Side = side;
+            this.cc = cc;
+        }
+
+        /// <summary>
         /// Add Fryceritops to order
         /// </summary>
         /// <param name="sender">Button clicked</param>
         /// <param name="e">Event args</param>
         private void AddFryceritops(object sender, RoutedEventArgs e)
         {
-            SideClicked(new Fryceritops());
+            if (cc == null)
+            {
+                SideClicked(new Fryceritops());
+            }
+            else
+            {
+                cc.Side = new Fryceritops();
+                cc.Side.Size = cc.Size;
+                cc.NotifyItemChanged("Special");
+                NavigationService.Navigate(new CustomizeCombo(cc));
+            }
         }
 
         /// <summary>
@@ -52,7 +74,17 @@ namespace PointOfSale
         /// <param name="e">Event args</param>
         private void AddMeteorMacAndCheese(object sender, RoutedEventArgs e)
         {
-            SideClicked(new MeteorMacAndCheese());
+            if (cc == null) 
+            { 
+                SideClicked(new MeteorMacAndCheese());
+            }
+            else
+            {
+                cc.Side = new MeteorMacAndCheese();
+                cc.Side.Size = cc.Size;
+                cc.NotifyItemChanged("Special");
+                NavigationService.Navigate(new CustomizeCombo(cc));
+            }
         }
 
         /// <summary>
@@ -62,7 +94,17 @@ namespace PointOfSale
         /// <param name="e">Event args</param>
         private void AddMezzorellaSticks(object sender, RoutedEventArgs e)
         {
-            SideClicked(new MezzorellaSticks());
+            if (cc == null)
+            {
+                SideClicked(new MezzorellaSticks());
+            }
+            else
+            {
+                cc.Side = new MezzorellaSticks();
+                cc.Side.Size = cc.Size;
+                cc.NotifyItemChanged("Special");
+                NavigationService.Navigate(new CustomizeCombo(cc));
+            }
         }
 
         /// <summary>
@@ -72,7 +114,17 @@ namespace PointOfSale
         /// <param name="e">Event args</param>
         private void AddTriceritots(object sender, RoutedEventArgs e)
         {
-            SideClicked(new Triceritots());
+            if (cc == null)
+            {
+                SideClicked(new Triceritots());
+            }
+            else
+            {
+                cc.Side = new Triceritots();
+                cc.Side.Size = cc.Size;
+                cc.NotifyItemChanged("Special");
+                NavigationService.Navigate(new CustomizeCombo(cc));
+            }
         }
 
         /// <summary>

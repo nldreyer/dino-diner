@@ -15,11 +15,19 @@ namespace PointOfSale
     {
         public NavigationService NavigationService { get; set; }
 
+        /// <summary>
+        /// OrderControl constructor
+        /// </summary>
         public OrderControl()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Navigate to correct page on item selection
+        /// </summary>
+        /// <param name="sender">Item clicked</param>
+        /// <param name="e">Event args</param>
         private void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (OrderItems.SelectedItem is Side side)
@@ -36,23 +44,23 @@ namespace PointOfSale
                 {
                     NavigationService?.Navigate(new CustomizeBrontowurst(bw));
                 }
-                if (entree is DinoNuggets dn)
+                else if (entree is DinoNuggets dn)
                 {
                     NavigationService?.Navigate(new CustomizeDinoNuggets(dn));
                 }
-                if (entree is PrehistoricPBJ pbj)
+                else if (entree is PrehistoricPBJ pbj)
                 {
                     NavigationService?.Navigate(new CustomizePBJ(pbj));
                 }
-                if (entree is SteakosaurusBurger sb)
+                else if (entree is SteakosaurusBurger sb)
                 {
                     NavigationService?.Navigate(new CustomizeSteakosaurusBurger(sb));
                 }
-                if (entree is TRexKingBurger kb)
+                else if (entree is TRexKingBurger kb)
                 {
                     NavigationService?.Navigate(new CustomizeTRexKingBurger(kb));
                 }
-                if (entree is VelociWrap vw)
+                else if (entree is VelociWrap vw)
                 {
                     NavigationService?.Navigate(new CustomizeVelociWrap(vw));
                 }
@@ -63,11 +71,24 @@ namespace PointOfSale
             }
         }
 
+        /// <summary>
+        /// Removes all items from the current order
+        /// </summary>
+        /// <param name="sender">Button clicked</param>
+        /// <param name="e">Event args</param>
         private void BtnCancelClick(object sender, RoutedEventArgs e)
         {
-            
+            if (DataContext is Order order)
+            {
+                order.Items.Clear();
+            }
         }
 
+        /// <summary>
+        /// Removes a certain item from the order
+        /// </summary>
+        /// <param name="sender">Button clicked</param>
+        /// <param name="e">Event args</param>
         private void OnRemoveItem(object sender, RoutedEventArgs e)
         {
             if (DataContext is Order order)

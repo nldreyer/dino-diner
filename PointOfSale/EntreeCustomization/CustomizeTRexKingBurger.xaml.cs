@@ -15,6 +15,7 @@ namespace PointOfSale
     {
         // Backing variable
         private TRexKingBurger kb;
+        private bool isComboCustomization = false;
 
         /// <summary>
         /// CustomizeTRexKingBurger constructor
@@ -27,13 +28,31 @@ namespace PointOfSale
         }
 
         /// <summary>
+        /// CustomizeTRexKingBurger constructor with combo
+        /// </summary>
+        /// <param name="kb">T-Rex King Burger to modify</param>
+        public CustomizeTRexKingBurger(TRexKingBurger kb, bool isCombo)
+        {
+            InitializeComponent();
+            this.kb = kb;
+            this.isComboCustomization = isCombo;
+        }
+
+        /// <summary>
         /// Navigate back to menu category selection
         /// </summary>
         /// <param name="sender">Button clicked</param>
         /// <param name="e">Event args</param>
         private void BtnClickDone(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new MenuCategorySelection());
+            if (isComboCustomization)
+            {
+                NavigationService.GoBack();
+            }
+            else
+            {
+                NavigationService.Navigate(new MenuCategorySelection());
+            }
         }
 
         /// <summary>

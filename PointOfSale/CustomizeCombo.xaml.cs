@@ -2,6 +2,7 @@
 *   Author: Nicholas Dreyer
 */
 using DinoDiner.Menu;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -11,9 +12,23 @@ namespace PointOfSale
     /// <summary>
     /// Interaction logic for CustomizeCombo.xaml
     /// </summary>
-    public partial class CustomizeCombo : Page
+    public partial class CustomizeCombo : Page, INotifyPropertyChanged
     {
         public CretaceousCombo combo;
+
+        /// <summary>
+        /// Notify of a property change; For price, calories, ingredients, and special
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Invoke a changed property notification
+        /// </summary>
+        /// <param name="propertyName">Name of property being updated</param>
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         /// <summary>
         /// CustomizeCombo constructor
@@ -22,6 +37,9 @@ namespace PointOfSale
         {
             InitializeComponent();
             this.combo = combo;
+            BtnEntree.Content = combo.Description;
+            BtnSide.Content = combo.Side.Description;
+            BtnDrink.Content = combo.Drink.Description;
         }
 
         /// <summary>
@@ -33,27 +51,33 @@ namespace PointOfSale
         {
             if (combo.Entree is Brontowurst bw)
             {
-                NavigationService?.Navigate(new CustomizeBrontowurst(bw), true);
+                bw.cc = combo;
+                NavigationService?.Navigate(new CustomizeBrontowurst(bw, true));
             }
-            if (combo.Entree is DinoNuggets dn)
+            else if (combo.Entree is DinoNuggets dn)
             {
-                NavigationService?.Navigate(new CustomizeDinoNuggets(dn));
+                dn.cc = combo;
+                NavigationService?.Navigate(new CustomizeDinoNuggets(dn, true));
             }
-            if (combo.Entree is PrehistoricPBJ pbj)
+            else if (combo.Entree is PrehistoricPBJ pbj)
             {
-                NavigationService?.Navigate(new CustomizePBJ(pbj));
+                pbj.cc = combo;
+                NavigationService?.Navigate(new CustomizePBJ(pbj, true));
             }
-            if (combo.Entree is SteakosaurusBurger sb)
+            else if (combo.Entree is SteakosaurusBurger sb)
             {
-                NavigationService?.Navigate(new CustomizeSteakosaurusBurger(sb));
+                sb.cc = combo;
+                NavigationService?.Navigate(new CustomizeSteakosaurusBurger(sb, true));
             }
-            if (combo.Entree is TRexKingBurger kb)
+            else if (combo.Entree is TRexKingBurger kb)
             {
-                NavigationService?.Navigate(new CustomizeTRexKingBurger(kb));
+                kb.cc = combo;
+                NavigationService?.Navigate(new CustomizeTRexKingBurger(kb, true));
             }
-            if (combo.Entree is VelociWrap vw)
+            else if (combo.Entree is VelociWrap vw)
             {
-                NavigationService?.Navigate(new CustomizeVelociWrap(vw));
+                vw.cc = combo;
+                NavigationService?.Navigate(new CustomizeVelociWrap(vw, true));
             }
         }
 
@@ -64,7 +88,7 @@ namespace PointOfSale
         /// <param name="e">Event arguments.</param>
         private void SelectSide(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new SideSelection());
+            NavigationService.Navigate(new SideSelection(combo.Side, combo));
         }
 
         /// <summary>
@@ -74,7 +98,62 @@ namespace PointOfSale
         /// <param name="e">Event arguments.</param>
         private void SelectDrink(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new DrinkSelection());
+            NavigationService.Navigate(new DrinkSelection(combo.Drink, combo));
+        }
+
+        /// <summary>
+        /// Changes side and drink sizes to small
+        /// </summary>
+        /// <param name="sender">Button that was pressed.</param>
+        /// <param name="e">Event arguments.</param>
+        private void BtnClickSmall(object sender, RoutedEventArgs e)
+        {
+            combo.Drink.Size = DinoDiner.Menu.Size.Small;
+            combo.Side.Size = DinoDiner.Menu.Size.Small;
+            combo.Size = DinoDiner.Menu.Size.Small;
+            BtnSide.Content = combo.Side.Description;
+            BtnDrink.Content = combo.Drink.Description;
+            combo.NotifyItemChanged("Special");
+        }
+
+        /// <summary>
+        /// Changes side and drink sizes to medium
+        /// </summary>
+        /// <param name="sender">Button that was pressed.</param>
+        /// <param name="e">Event arguments.</param>
+        private void BtnClickMedium(object sender, RoutedEventArgs e)
+        {
+            combo.Drink.Size = DinoDiner.Menu.Size.Medium;
+            combo.Side.Size = DinoDiner.Menu.Size.Medium;
+            combo.Size = DinoDiner.Menu.Size.Medium;
+            BtnSide.Content = combo.Side.Description;
+            BtnDrink.Content = combo.Drink.Description;
+            combo.NotifyItemChanged("Special");
+        }
+
+        /// <summary>
+        /// Changes side and drink sizes to large
+        /// </summary>
+        /// <param name="sender">Button that was pressed.</param>
+        /// <param name="e">Event arguments.</param>
+        private void BtnClickLarge(object sender, RoutedEventArgs e)
+        {
+            combo.Drink.Size = DinoDiner.Menu.Size.Large;
+            combo.Side.Size = DinoDiner.Menu.Size.Large;
+            combo.Size = DinoDiner.Menu.Size.Large;
+            BtnSide.Content = combo.Side.Description;
+            BtnDrink.Content = combo.Drink.Description;
+            combo.NotifyItemChanged("Special");
+        }
+
+        /// <summary>
+        /// Navigates back to the main menu
+        /// </summary>
+        /// <param name="sender">Button that was pressed.</param>
+        /// <param name="e">Event arguments.</param>
+        private void BtnClickDone(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new MenuCategorySelection());
         }
     }
 }

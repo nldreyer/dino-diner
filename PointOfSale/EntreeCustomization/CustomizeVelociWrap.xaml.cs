@@ -15,6 +15,7 @@ namespace PointOfSale
     {
         // Backing variable
         private VelociWrap vw;
+        private bool isComboCustomization = false;
 
         /// <summary>
         /// CustomizeVelociWrap constructor
@@ -27,13 +28,30 @@ namespace PointOfSale
         }
 
         /// <summary>
+        /// CustomizeVelociWrap constructor with combo
+        /// </summary>
+        /// <param name="pbj">VelociWrap to modify</param>
+        public CustomizeVelociWrap(VelociWrap vw, bool isCombo)
+        {
+            InitializeComponent();
+            this.vw = vw;
+        }
+
+        /// <summary>
         /// Navigate back to menu category selection
         /// </summary>
         /// <param name="sender">Button clicked</param>
         /// <param name="e">Event args</param>
         private void BtnClickDone(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new MenuCategorySelection());
+            if (isComboCustomization)
+            {
+                NavigationService.GoBack();
+            }
+            else
+            {
+                NavigationService.Navigate(new MenuCategorySelection());
+            }
         }
 
         /// <summary>

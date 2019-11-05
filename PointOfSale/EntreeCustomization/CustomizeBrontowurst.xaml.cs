@@ -28,7 +28,7 @@ namespace PointOfSale
         }
 
         /// <summary>
-        /// CustomizeBrontowurst combo constructor
+        /// CustomizeBrontowurst combo constructor with combo
         /// </summary>
         /// <param name="bw">Brontowurst to modify</param>
         public CustomizeBrontowurst(Brontowurst bw, bool isCombo)

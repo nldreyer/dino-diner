@@ -15,6 +15,7 @@ namespace PointOfSale
     public partial class DrinkSelection : Page
     {
         public Drink Drink { get; set; }
+        private CretaceousCombo cc;
 
         /// <summary>
         /// DrinkSelection constructor
@@ -34,6 +35,27 @@ namespace PointOfSale
             this.Drink = drink;
             DisableDrinkButtons();
             EnableSizeButtons();
+            InitializeExistingDrink(drink);
+        }
+
+        /// <summary>
+        /// DrinkSelection constructor with existing drink inside of a combo
+        /// </summary>
+        /// <param name="drink">Drink to modify</param>
+        public DrinkSelection(Drink drink, CretaceousCombo cc)
+        {
+            InitializeComponent();
+            this.Drink = drink;
+            this.cc = cc;
+            InitializeExistingDrink(drink);
+        }
+
+        /// <summary>
+        /// Configures the buttons to work with the existing drink
+        /// </summary>
+        /// <param name="drink">Drink to configure buttons for</param>
+        private void InitializeExistingDrink(Drink drink)
+        {
             BtnIceSpecial.IsEnabled = true;
             BtnSweetDecafFlavorSpecial.IsEnabled = true;
             BtnIceSpecial.Content = "Hold Ice";
@@ -65,7 +87,18 @@ namespace PointOfSale
         /// <param name="e">Event args</param>
         private void AddSodasaurus(object sender, RoutedEventArgs e)
         {
-            DrinkClicked(new Sodasaurus());
+            if (cc == null)
+            {
+                DrinkClicked(new Sodasaurus());
+            }
+            else
+            {
+                this.Drink = new Sodasaurus();
+                cc.Drink = this.Drink;
+                this.Drink.Size = cc.Size;
+                DisableDrinkButtons();
+                cc.NotifyItemChanged("Special");
+            }
             BtnSweetDecafFlavorSpecial.Content = "Flavor";
         }
 
@@ -76,7 +109,18 @@ namespace PointOfSale
         /// <param name="e">Event args</param>
         private void AddTyrannotea(object sender, RoutedEventArgs e)
         {
-            DrinkClicked(new Tyrannotea());
+            if (cc == null)
+            {
+                DrinkClicked(new Tyrannotea());
+            }
+            else
+            {
+                this.Drink = new Tyrannotea();
+                cc.Drink = this.Drink;
+                this.Drink.Size = cc.Size;
+                DisableDrinkButtons();
+                cc.NotifyItemChanged("Special");
+            }
             BtnSweetDecafFlavorSpecial.Content = "Sweet";
             BtnLemonSpecial.IsEnabled = true;
         }
@@ -88,7 +132,19 @@ namespace PointOfSale
         /// <param name="e">Event args</param>
         private void AddJurassicJava(object sender, RoutedEventArgs e)
         {
-            DrinkClicked(new JurassicJava());
+            if (cc == null)
+            {
+                DrinkClicked(new JurassicJava());
+            }
+            else
+            {
+                this.Drink = new JurassicJava();
+                cc.Drink = this.Drink;
+                this.Drink.Size = cc.Size;
+                cc.Drink.Size = cc.Size;
+                DisableDrinkButtons();
+                cc.NotifyItemChanged("Special");
+            }
             BtnIceSpecial.Content = "Add Ice";
             BtnSweetDecafFlavorSpecial.Content = "Decaf";
         }
@@ -100,7 +156,18 @@ namespace PointOfSale
         /// <param name="e">Event args</param>
         private void AddWater(object sender, RoutedEventArgs e)
         {
-            DrinkClicked(new Water());
+            if (cc == null)
+            {
+                DrinkClicked(new Water());
+            }
+            else
+            {
+                this.Drink = new Water();
+                cc.Drink = this.Drink;
+                this.Drink.Size = cc.Size;
+                DisableDrinkButtons();
+                cc.NotifyItemChanged("Special");
+            }
             BtnSweetDecafFlavorSpecial.IsEnabled = false;
             BtnLemonSpecial.IsEnabled = true;
         }
@@ -144,7 +211,7 @@ namespace PointOfSale
         {
             if (this.Drink is Sodasaurus ss)
             {
-                NavigationService.Navigate(new FlavorSelection(ss));
+                NavigationService.Navigate(new FlavorSelection(ss, cc));
             }
             else if (this.Drink is Tyrannotea tt)
             {
@@ -153,6 +220,10 @@ namespace PointOfSale
             else if (this.Drink is JurassicJava jj)
             {
                 jj.Decaf = true;
+            }
+            if (cc != null)
+            {
+                cc.NotifyItemChanged("Special");
             }
         }
 
@@ -193,7 +264,14 @@ namespace PointOfSale
         /// <param name="e">Event arguments.</param>
         private void BtnClickDone(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new MenuCategorySelection());
+            if (cc == null)
+            {
+                NavigationService.Navigate(new MenuCategorySelection());
+            }
+            else
+            {
+                NavigationService.Navigate(new CustomizeCombo(cc));
+            }
         }
 
         /// <summary>
@@ -237,6 +315,10 @@ namespace PointOfSale
             {
                 tt.AddLemon();
             }
+            if (cc != null)
+            {
+                cc.NotifyItemChanged("Special");
+            }
         }
 
         /// <summary>
@@ -261,6 +343,10 @@ namespace PointOfSale
             else if (this.Drink is Sodasaurus ss)
             {
                 ss.HoldIce();
+            }
+            if (cc != null)
+            {
+                cc.NotifyItemChanged("Special");
             }
         }
     }

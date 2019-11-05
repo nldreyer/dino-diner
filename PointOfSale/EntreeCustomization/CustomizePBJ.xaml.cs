@@ -15,6 +15,7 @@ namespace PointOfSale
     {
         // Backing variable
         private PrehistoricPBJ pbj;
+        private bool isComboCustomization = false;
 
         /// <summary>
         /// CustomizePBJ constructor
@@ -27,13 +28,31 @@ namespace PointOfSale
         }
 
         /// <summary>
+        /// CustomizePBJ constructor
+        /// </summary>
+        /// <param name="pbj">Prehistoric PBJ to modify</param>
+        public CustomizePBJ(PrehistoricPBJ pbj, bool isCombo)
+        {
+            InitializeComponent();
+            this.pbj = pbj;
+            this.isComboCustomization = isCombo;
+        }
+
+        /// <summary>
         /// Navigate back to menu category selection
         /// </summary>
         /// <param name="sender">Button clicked</param>
         /// <param name="e">Event args</param>
         private void BtnClickDone(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new MenuCategorySelection());
+            if (isComboCustomization)
+            {
+                NavigationService.GoBack();
+            }
+            else
+            {
+                NavigationService.Navigate(new MenuCategorySelection());
+            }
         }
 
         /// <summary>

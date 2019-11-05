@@ -30,11 +30,47 @@ namespace PointOfSale
         {
             if (sender is Button b)
             {
-                if (b.Name.Equals("BtnBrontowurst"))
+                if (DataContext is Order order)
                 {
-                    if (DataContext is Order order)
+                    if (b.Name.Equals("BtnBrontowurst"))
                     {
                         CretaceousCombo cc = new CretaceousCombo(new Brontowurst());
+                        order.Add(cc);
+                        NavigationService.Navigate(new CustomizeCombo(cc));
+                    }
+                    if (b.Name.Equals("BtnDinoNuggets"))
+                    {
+                        CretaceousCombo cc = new CretaceousCombo(new DinoNuggets());
+                        order.Add(cc);
+                        NavigationService.Navigate(new CustomizeCombo(cc));
+                    }
+                    if (b.Name.Equals("BtnSteakosaurus"))
+                    {
+                        CretaceousCombo cc = new CretaceousCombo(new SteakosaurusBurger());
+                        order.Add(cc);
+                        NavigationService.Navigate(new CustomizeCombo(cc));
+                    }
+                    if (b.Name.Equals("BtnTRexKingBurger"))
+                    {
+                        CretaceousCombo cc = new CretaceousCombo(new TRexKingBurger());
+                        order.Add(cc);
+                        NavigationService.Navigate(new CustomizeCombo(cc));
+                    }
+                    if (b.Name.Equals("BtnPterodactylWings"))
+                    {
+                        CretaceousCombo cc = new CretaceousCombo(new PterodactylWings());
+                        order.Add(cc);
+                        NavigationService.Navigate(new CustomizeCombo(cc));
+                    }
+                    if (b.Name.Equals("BtnPBJ"))
+                    {
+                        CretaceousCombo cc = new CretaceousCombo(new PrehistoricPBJ());
+                        order.Add(cc);
+                        NavigationService.Navigate(new CustomizeCombo(cc));
+                    }
+                    if (b.Name.Equals("BtnVelociWrap"))
+                    {
+                        CretaceousCombo cc = new CretaceousCombo(new VelociWrap());
                         order.Add(cc);
                         NavigationService.Navigate(new CustomizeCombo(cc));
                     }

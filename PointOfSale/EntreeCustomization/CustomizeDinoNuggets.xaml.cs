@@ -15,6 +15,7 @@ namespace PointOfSale
     {
         // Backing variable
         private DinoNuggets dn;
+        private bool isComboCustomization = false;
 
         /// <summary>
         /// CustomizeDinoNuggets constructor
@@ -27,13 +28,31 @@ namespace PointOfSale
         }
 
         /// <summary>
+        /// CustomizeDinoNuggets constructor with combo
+        /// </summary>
+        /// <param name="dn">Dino Nuggets to modify</param>
+        public CustomizeDinoNuggets(DinoNuggets dn, bool isCombo)
+        {
+            InitializeComponent();
+            this.dn = dn;
+            this.isComboCustomization = isCombo;
+        }
+
+        /// <summary>
         /// Navigate back to menu category selection
         /// </summary>
         /// <param name="sender">Button clicked</param>
         /// <param name="e">Event args</param>
         private void BtnClickDone(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new MenuCategorySelection());
+            if (isComboCustomization)
+            {
+                NavigationService.GoBack();
+            }
+            else
+            {
+                NavigationService.Navigate(new MenuCategorySelection());
+            }
         }
 
         /// <summary>

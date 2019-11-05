@@ -13,8 +13,9 @@ namespace PointOfSale
     /// </summary>
     public partial class FlavorSelection : Page
     {
-        // Backing variable
+        // Backing variables
         public Drink Drink;
+        private CretaceousCombo cc;
 
         /// <summary>
         /// FlavorSelection constructor
@@ -24,6 +25,17 @@ namespace PointOfSale
         {
             InitializeComponent();
             this.Drink = drink;
+        }
+
+        /// <summary>
+        /// FlavorSelection constructor within combo
+        /// </summary>
+        /// <param name="drink">Drink to modify</param>
+        public FlavorSelection(Drink drink, CretaceousCombo cc)
+        {
+            InitializeComponent();
+            this.Drink = drink;
+            this.cc = cc;
         }
 
         /// <summary>
@@ -65,6 +77,10 @@ namespace PointOfSale
                     {
                         ss.Flavor = SodasaurusFlavor.Vanilla;
                     }
+                }
+                if (cc != null)
+                {
+                    cc.NotifyItemChanged("Special");
                 }
                 NavigationService.Navigate(new MenuCategorySelection());
             }

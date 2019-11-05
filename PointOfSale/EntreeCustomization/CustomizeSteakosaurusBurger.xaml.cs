@@ -15,6 +15,7 @@ namespace PointOfSale
     {
         // Backing variable
         private SteakosaurusBurger sb;
+        private bool isComboCustomization = false;
 
         /// <summary>
         /// CustomizeSteakosaurusBurger constructor
@@ -27,13 +28,31 @@ namespace PointOfSale
         }
 
         /// <summary>
+        /// CustomizeSteakosaurusBurger constructor with combo
+        /// </summary>
+        /// <param name="sb">Steakosaurus Burger to modify</param>
+        public CustomizeSteakosaurusBurger(SteakosaurusBurger sb, bool isCombo)
+        {
+            InitializeComponent();
+            this.sb = sb;
+            this.isComboCustomization = isCombo;
+        }
+
+        /// <summary>
         /// Navigate back to menu category selection
         /// </summary>
         /// <param name="sender">Button clicked</param>
         /// <param name="e">Event args</param>
         private void BtnClickDone(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new MenuCategorySelection());
+            if (isComboCustomization)
+            {
+                NavigationService.GoBack();
+            }
+            else
+            {
+                NavigationService.Navigate(new MenuCategorySelection());
+            }
         }
 
         /// <summary>

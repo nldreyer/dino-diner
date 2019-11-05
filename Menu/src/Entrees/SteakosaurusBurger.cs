@@ -13,6 +13,7 @@ namespace DinoDiner.Menu
         private bool pickle = true;
         private bool ketchup = true;
         private bool mustard = true;
+        public CretaceousCombo cc;
 
         /// <summary>
         /// Notify of a property change; For price, calories, ingredients, and special
@@ -26,6 +27,7 @@ namespace DinoDiner.Menu
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            TryNotifyCombo(propertyName);
         }
 
         /// <summary>
@@ -126,6 +128,18 @@ namespace DinoDiner.Menu
                 if (!ketchup) specials.Add("Hold Ketchup");
                 if (!mustard) specials.Add("Hold Mustard");
                 return specials.ToArray();
+            }
+        }
+
+        /// <summary>
+        /// Checks if the entree is linked to a combo, if so then it notifies of a property change
+        /// </summary>
+        /// <param name="propertyName">Name of property to notify</param>
+        private void TryNotifyCombo(string propertyName)
+        {
+            if (cc != null)
+            {
+                cc.NotifyItemChanged(propertyName);
             }
         }
     }

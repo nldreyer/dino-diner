@@ -187,5 +187,10 @@ namespace DinoDiner.Menu
                 return specials.ToArray();
             }
         }
+
+        public void NotifyItemChanged(string propertyName)
+        {
+            OnPropertyChanged(propertyName);
+        }
     }
 }
