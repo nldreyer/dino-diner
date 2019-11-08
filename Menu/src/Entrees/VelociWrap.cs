@@ -15,21 +15,6 @@ namespace DinoDiner.Menu
         public CretaceousCombo cc;
 
         /// <summary>
-        /// Notify of a property change; For price, calories, ingredients, and special
-        /// </summary>
-        public override event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// Invoke a changed property notification
-        /// </summary>
-        /// <param name="propertyName">Name of property being updated</param>
-        protected void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            TryNotifyCombo(propertyName);
-        }
-
-        /// <summary>
         /// VelociWrap constructor
         /// </summary>
         public VelociWrap()
@@ -59,8 +44,8 @@ namespace DinoDiner.Menu
         public void HoldDressing()
         {
             this.dressing = false;
-            OnPropertyChanged("Ingredients");
-            OnPropertyChanged("Special");
+            OnPropertyChanged(cc, "Ingredients");
+            OnPropertyChanged(cc, "Special");
         }
 
         /// <summary>
@@ -69,8 +54,8 @@ namespace DinoDiner.Menu
         public void HoldLettuce()
         {
             this.lettuce = false;
-            OnPropertyChanged("Ingredients");
-            OnPropertyChanged("Special");
+            OnPropertyChanged(cc, "Ingredients");
+            OnPropertyChanged(cc, "Special");
         }
 
         /// <summary>
@@ -79,8 +64,8 @@ namespace DinoDiner.Menu
         public void HoldCheese()
         {
             this.cheese = false;
-            OnPropertyChanged("Ingredients");
-            OnPropertyChanged("Special");
+            OnPropertyChanged(cc, "Ingredients");
+            OnPropertyChanged(cc, "Special");
         }
 
         /// <summary>
@@ -90,17 +75,6 @@ namespace DinoDiner.Menu
         public override string ToString()
         {
             return "Veloci-Wrap";
-        }
-
-        /// <summary>
-        /// Gets description
-        /// </summary>
-        public override string Description
-        {
-            get
-            {
-                return this.ToString();
-            }
         }
 
         /// <summary>
@@ -115,18 +89,6 @@ namespace DinoDiner.Menu
                 if (!lettuce) specials.Add("Hold Lettuce");
                 if (!cheese) specials.Add("Hold Cheese");
                 return specials.ToArray();
-            }
-        }
-
-        /// <summary>
-        /// Checks if the entree is linked to a combo, if so then it notifies of a property change
-        /// </summary>
-        /// <param name="propertyName">Name of property to notify</param>
-        private void TryNotifyCombo(string propertyName)
-        {
-            if (cc != null)
-            {
-                cc.NotifyItemChanged(propertyName);
             }
         }
     }

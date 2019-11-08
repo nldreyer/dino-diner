@@ -13,7 +13,17 @@ namespace DinoDiner.Menu
         /// <summary>
         /// Notify of a property change
         /// </summary>
-        public abstract event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Invoke a changed property notification
+        /// </summary>
+        /// <param name="propertyName">Name of property being updated</param>
+        protected void OnPropertyChanged(CretaceousCombo cc, string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            TryNotifyCombo(cc, propertyName);
+        }
 
         /// <summary>
         /// Gets and sets the price
@@ -33,11 +43,30 @@ namespace DinoDiner.Menu
         /// <summary>
         /// Gets the description
         /// </summary>
-        public abstract string Description { get; }
+        public string Description
+        {
+            get
+            {
+                return this.ToString();
+            }
+        }
 
         /// <summary>
         /// Gets the special order instructions
         /// </summary>
         public abstract string[] Special { get; }
+
+        /// <summary>
+        /// Checks if the entree is linked to a combo, if so then it notifies of a property change
+        /// </summary>
+        /// <param name="cc">Combo to send notification</param>
+        /// <param name="propertyName">Property to notify for</param>
+        protected void TryNotifyCombo(CretaceousCombo cc, string propertyName)
+        {
+            if (cc != null)
+            {
+                cc.NotifyItemChanged(propertyName);
+            }
+        }
     }
 }

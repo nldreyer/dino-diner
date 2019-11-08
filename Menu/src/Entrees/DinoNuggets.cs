@@ -13,21 +13,6 @@ namespace DinoDiner.Menu
         public CretaceousCombo cc;
 
         /// <summary>
-        /// Notify of a property change; For price, calories, ingredients, and special
-        /// </summary>
-        public override event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// Invoke a changed property notification
-        /// </summary>
-        /// <param name="propertyName">Name of property being updated</param>
-        protected void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            TryNotifyCombo(propertyName);
-        }
-
-        /// <summary>
         /// DinoNuggets constructor
         /// </summary>
         public DinoNuggets()
@@ -60,10 +45,10 @@ namespace DinoDiner.Menu
             this.extraNuggets++;
             this.Price += 0.25;
             this.Calories += 59;
-            OnPropertyChanged("Ingredients");
-            OnPropertyChanged("Special");
-            OnPropertyChanged("Price");
-            OnPropertyChanged("Calories");
+            OnPropertyChanged(cc, "Ingredients");
+            OnPropertyChanged(cc, "Special");
+            OnPropertyChanged(cc, "Price");
+            OnPropertyChanged(cc, "Calories");
         }
 
         /// <summary>
@@ -76,17 +61,6 @@ namespace DinoDiner.Menu
         }
 
         /// <summary>
-        /// Gets description
-        /// </summary>
-        public override string Description
-        {
-            get
-            {
-                return this.ToString();
-            }
-        }
-
-        /// <summary>
         /// Gets special
         /// </summary>
         public override string[] Special
@@ -96,18 +70,6 @@ namespace DinoDiner.Menu
                 List<string> specials = new List<string>();
                 if (extraNuggets != 0) specials.Add($"{extraNuggets} Extra Nuggets");
                 return specials.ToArray();
-            }
-        }
-
-        /// <summary>
-        /// Checks if the entree is linked to a combo, if so then it notifies of a property change
-        /// </summary>
-        /// <param name="propertyName">Name of property to notify</param>
-        private void TryNotifyCombo(string propertyName)
-        {
-            if (cc != null)
-            {
-                cc.NotifyItemChanged(propertyName);
             }
         }
     }

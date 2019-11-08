@@ -14,21 +14,6 @@ namespace DinoDiner.Menu
         public CretaceousCombo cc;
 
         /// <summary>
-        /// Notify of a property change; For price, calories, ingredients, and special
-        /// </summary>
-        public override event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// Invoke a changed property notification
-        /// </summary>
-        /// <param name="propertyName">Name of property being updated</param>
-        protected void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            TryNotifyCombo(propertyName);
-        }
-
-        /// <summary>
         /// PrehistoricPBJ constructor
         /// </summary>
         public PrehistoricPBJ()
@@ -57,8 +42,8 @@ namespace DinoDiner.Menu
         public void HoldPeanutButter()
         {
             this.peanutButter = false;
-            OnPropertyChanged("Ingredients");
-            OnPropertyChanged("Special");
+            OnPropertyChanged(cc, "Ingredients");
+            OnPropertyChanged(cc, "Special");
         }
 
         /// <summary>
@@ -67,8 +52,8 @@ namespace DinoDiner.Menu
         public void HoldJelly()
         {
             this.jelly = false;
-            OnPropertyChanged("Ingredients");
-            OnPropertyChanged("Special");
+            OnPropertyChanged(cc, "Ingredients");
+            OnPropertyChanged(cc, "Special");
         }
 
         /// <summary>
@@ -78,17 +63,6 @@ namespace DinoDiner.Menu
         public override string ToString()
         {
             return "Prehistoric PB&J";
-        }
-
-        /// <summary>
-        /// Gets description
-        /// </summary>
-        public override string Description
-        {
-            get
-            {
-                return this.ToString();
-            }
         }
 
         /// <summary>
@@ -102,18 +76,6 @@ namespace DinoDiner.Menu
                 if (!peanutButter) specials.Add("Hold Peanut Butter");
                 if (!jelly) specials.Add("Hold Jelly");
                 return specials.ToArray();
-            }
-        }
-
-        /// <summary>
-        /// Checks if the entree is linked to a combo, if so then it notifies of a property change
-        /// </summary>
-        /// <param name="propertyName">Name of property to notify</param>
-        private void TryNotifyCombo(string propertyName)
-        {
-            if (cc != null)
-            {
-                cc.NotifyItemChanged(propertyName);
             }
         }
     }

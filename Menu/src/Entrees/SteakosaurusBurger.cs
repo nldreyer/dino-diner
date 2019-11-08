@@ -16,21 +16,6 @@ namespace DinoDiner.Menu
         public CretaceousCombo cc;
 
         /// <summary>
-        /// Notify of a property change; For price, calories, ingredients, and special
-        /// </summary>
-        public override event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// Invoke a changed property notification
-        /// </summary>
-        /// <param name="propertyName">Name of property being updated</param>
-        protected void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            TryNotifyCombo(propertyName);
-        }
-
-        /// <summary>
         /// SteakosaurusBurger constructor
         /// </summary>
         public SteakosaurusBurger()
@@ -61,8 +46,8 @@ namespace DinoDiner.Menu
         public void HoldBun()
         {
             this.bun = false;
-            OnPropertyChanged("Ingredients");
-            OnPropertyChanged("Special");
+            OnPropertyChanged(cc, "Ingredients");
+            OnPropertyChanged(cc, "Special");
         }
 
         /// <summary>
@@ -71,8 +56,8 @@ namespace DinoDiner.Menu
         public void HoldPickle()
         {
             this.pickle = false;
-            OnPropertyChanged("Ingredients");
-            OnPropertyChanged("Special");
+            OnPropertyChanged(cc, "Ingredients");
+            OnPropertyChanged(cc, "Special");
         }
 
         /// <summary>
@@ -81,8 +66,8 @@ namespace DinoDiner.Menu
         public void HoldKetchup()
         {
             this.ketchup = false;
-            OnPropertyChanged("Ingredients");
-            OnPropertyChanged("Special");
+            OnPropertyChanged(cc, "Ingredients");
+            OnPropertyChanged(cc, "Special");
         }
 
         /// <summary>
@@ -91,8 +76,8 @@ namespace DinoDiner.Menu
         public void HoldMustard()
         {
             this.mustard = false;
-            OnPropertyChanged("Ingredients");
-            OnPropertyChanged("Special");
+            OnPropertyChanged(cc, "Ingredients");
+            OnPropertyChanged(cc, "Special");
         }
 
         /// <summary>
@@ -102,17 +87,6 @@ namespace DinoDiner.Menu
         public override string ToString()
         {
             return "Steakosaurus Burger";
-        }
-
-        /// <summary>
-        /// Gets description
-        /// </summary>
-        public override string Description
-        {
-            get
-            {
-                return this.ToString();
-            }
         }
 
         /// <summary>
@@ -128,18 +102,6 @@ namespace DinoDiner.Menu
                 if (!ketchup) specials.Add("Hold Ketchup");
                 if (!mustard) specials.Add("Hold Mustard");
                 return specials.ToArray();
-            }
-        }
-
-        /// <summary>
-        /// Checks if the entree is linked to a combo, if so then it notifies of a property change
-        /// </summary>
-        /// <param name="propertyName">Name of property to notify</param>
-        private void TryNotifyCombo(string propertyName)
-        {
-            if (cc != null)
-            {
-                cc.NotifyItemChanged(propertyName);
             }
         }
     }
