@@ -18,11 +18,26 @@ namespace DinoDiner.Menu
         /// <summary>
         /// Invoke a changed property notification
         /// </summary>
-        /// <param name="propertyName">Name of property being updated</param>
+        /// <param name="cc">Combo to call a notification, allowed to be null</param>
+        /// <param name="propertyName">Name of property to notify for</param>
         protected void OnPropertyChanged(CretaceousCombo cc, string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             TryNotifyCombo(cc, propertyName);
+        }
+
+        /// <summary>
+        /// Invoke a changed property notification
+        /// </summary>
+        /// <param name="cc">Combo to call a notification, allowed to be null</param>
+        /// <param name="propertyNames">Array of property names to notify</param>
+        protected void OnPropertyChanged(CretaceousCombo cc, string[] propertyNames)
+        {
+            foreach (string property in propertyNames)
+            {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
+                TryNotifyCombo(cc, property);
+            }
         }
 
         /// <summary>

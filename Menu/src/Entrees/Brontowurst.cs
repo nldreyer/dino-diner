@@ -44,8 +44,7 @@ namespace DinoDiner.Menu
         public void HoldBun()
         {
             this.bun = false;
-            OnPropertyChanged(cc, "Ingredients");
-            OnPropertyChanged(cc, "Special");
+            OnPropertyChanged(cc, new string[] { "Ingredients", "Special" });
         }
 
         /// <summary>
@@ -54,8 +53,7 @@ namespace DinoDiner.Menu
         public void HoldPeppers()
         {
             this.peppers = false;
-            OnPropertyChanged(cc, "Ingredients");
-            OnPropertyChanged(cc, "Special");
+            OnPropertyChanged(cc, new string[] { "Ingredients", "Special" });
         }
 
         /// <summary>
@@ -64,8 +62,7 @@ namespace DinoDiner.Menu
         public void HoldOnion()
         {
             this.onion = false;
-            OnPropertyChanged(cc, "Ingredients");
-            OnPropertyChanged(cc, "Special");
+            OnPropertyChanged(cc, new string[] { "Ingredients", "Special" });
         }
 
         /// <summary>

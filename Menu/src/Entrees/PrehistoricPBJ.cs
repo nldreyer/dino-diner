@@ -42,8 +42,7 @@ namespace DinoDiner.Menu
         public void HoldPeanutButter()
         {
             this.peanutButter = false;
-            OnPropertyChanged(cc, "Ingredients");
-            OnPropertyChanged(cc, "Special");
+            OnPropertyChanged(cc, new string[] { "Ingredients", "Special" });
         }
 
         /// <summary>
@@ -52,8 +51,7 @@ namespace DinoDiner.Menu
         public void HoldJelly()
         {
             this.jelly = false;
-            OnPropertyChanged(cc, "Ingredients");
-            OnPropertyChanged(cc, "Special");
+            OnPropertyChanged(cc, new string[] { "Ingredients", "Special" });
         }
 
         /// <summary>

@@ -54,8 +54,7 @@ namespace DinoDiner.Menu
         public void HoldBun()
         {
             this.bun = false;
-            OnPropertyChanged(cc, "Ingredients");
-            OnPropertyChanged(cc, "Special");
+            OnPropertyChanged(cc, new string[] { "Ingredients", "Special" });
         }
 
         /// <summary>
@@ -64,8 +63,7 @@ namespace DinoDiner.Menu
         public void HoldLettuce()
         {
             this.lettuce = false;
-            OnPropertyChanged(cc, "Ingredients");
-            OnPropertyChanged(cc, "Special");
+            OnPropertyChanged(cc, new string[] { "Ingredients", "Special" });
         }
 
         /// <summary>
@@ -74,8 +72,7 @@ namespace DinoDiner.Menu
         public void HoldTomato()
         {
             this.tomato = false;
-            OnPropertyChanged(cc, "Ingredients");
-            OnPropertyChanged(cc, "Special");
+            OnPropertyChanged(cc, new string[] { "Ingredients", "Special" });
         }
 
         /// <summary>
@@ -84,8 +81,7 @@ namespace DinoDiner.Menu
         public void HoldOnion()
         {
             this.onion = false;
-            OnPropertyChanged(cc, "Ingredients");
-            OnPropertyChanged(cc, "Special");
+            OnPropertyChanged(cc, new string[] { "Ingredients", "Special" });
         }
 
         /// <summary>
@@ -94,8 +90,7 @@ namespace DinoDiner.Menu
         public void HoldPickle()
         {
             this.pickle = false;
-            OnPropertyChanged(cc, "Ingredients");
-            OnPropertyChanged(cc, "Special");
+            OnPropertyChanged(cc, new string[] { "Ingredients", "Special" });
         }
 
         /// <summary>
@@ -104,8 +99,7 @@ namespace DinoDiner.Menu
         public void HoldKetchup()
         {
             this.ketchup = false;
-            OnPropertyChanged(cc, "Ingredients");
-            OnPropertyChanged(cc, "Special");
+            OnPropertyChanged(cc, new string[] { "Ingredients", "Special" });
         }
 
         /// <summary>
@@ -114,8 +108,7 @@ namespace DinoDiner.Menu
         public void HoldMustard()
         {
             this.mustard = false;
-            OnPropertyChanged(cc, "Ingredients");
-            OnPropertyChanged(cc, "Special");
+            OnPropertyChanged(cc, new string[] { "Ingredients", "Special" });
         }
 
         /// <summary>
@@ -124,8 +117,7 @@ namespace DinoDiner.Menu
         public void HoldMayo()
         {
             this.mayo = false;
-            OnPropertyChanged(cc, "Ingredients");
-            OnPropertyChanged(cc, "Special");
+            OnPropertyChanged(cc, new string[] { "Ingredients", "Special" });
         }
 
         /// <summary>

@@ -45,10 +45,7 @@ namespace DinoDiner.Menu
             this.extraNuggets++;
             this.Price += 0.25;
             this.Calories += 59;
-            OnPropertyChanged(cc, "Ingredients");
-            OnPropertyChanged(cc, "Special");
-            OnPropertyChanged(cc, "Price");
-            OnPropertyChanged(cc, "Calories");
+            OnPropertyChanged(cc, new string[] { "Ingredients", "Special", "Price", "Calories" });
         }
 
         /// <summary>
