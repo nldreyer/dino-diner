@@ -59,7 +59,13 @@ namespace DinoDiner.Menu
         /// <summary>
         /// Gets the description
         /// </summary>
-        public abstract string Description { get; }
+        public string Description
+        {
+            get
+            {
+                return this.ToString();
+            }
+        }
 
         /// <summary>
         /// Gets the special order instructions

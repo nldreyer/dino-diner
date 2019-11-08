@@ -60,17 +60,6 @@ namespace DinoDiner.Menu
         }
 
         /// <summary>
-        /// Gets description
-        /// </summary>
-        public override string Description
-        {
-            get
-            {
-                return this.ToString();
-            }
-        }
-
-        /// <summary>
         /// Gets special
         /// </summary>
         public override string[] Special
