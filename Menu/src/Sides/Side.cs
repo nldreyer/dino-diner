@@ -12,7 +12,28 @@ namespace DinoDiner.Menu
         /// <summary>
         /// Notify of a property change
         /// </summary>
-        public abstract event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Invoke a changed property notification
+        /// </summary>
+        /// <param name="propertyName">Name of property being updated</param>
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        /// <summary>
+        /// Invoke a changed property notification
+        /// </summary>
+        /// <param name="propertyNames">Array of property names to notify</param>
+        protected void OnPropertyChanged(string[] propertyNames)
+        {
+            foreach (string property in propertyNames)
+            {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
+            }
+        }
 
         /// <summary>
         /// Gets and sets the price
