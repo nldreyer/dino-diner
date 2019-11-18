@@ -82,7 +82,7 @@ namespace PointOfSale
                 {
                     cc.NotifyItemChanged("Special");
                 }
-                NavigationService.Navigate(new MenuCategorySelection());
+                NavigationService.GoBack();
             }
         }
     }

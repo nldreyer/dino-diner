@@ -76,7 +76,7 @@
                     </Style>
                 </Grid.Resources>
                 <Button Name="BtnSweetDecafFlavorSpecial" Grid.Row="0" Click="SelectFlavor" IsEnabled="False">Sweet/Decaf/Flavor</Button>
-                <Button Name="BtnLemonSpecial" Click="AddLemon" Grid.Row="1" IsEnabled="False">Add Lemon</Button>
+                <Button Name="BtnLemonCreamSpecial" Click="AddLemonCream" Grid.Row="1" IsEnabled="False">Add Lemon/Cream</Button>
                 <Button Name="BtnIceSpecial" Click="ModifyIce" Grid.Row="2" IsEnabled="False">Add/Hold Ice</Button>
             </Grid>
         </DockPanel>

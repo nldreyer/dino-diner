@@ -66,17 +66,21 @@ namespace PointOfSale
             else if (drink.Description.Contains("Tyrannotea"))
             {
                 BtnSweetDecafFlavorSpecial.Content = "Sweet";
-                BtnLemonSpecial.IsEnabled = true;
+                BtnLemonCreamSpecial.IsEnabled = true;
+                BtnLemonCreamSpecial.Content = "Add Lemon";
             }
             else if (drink.Description.Contains("Jurassic Java"))
             {
                 BtnIceSpecial.Content = "Add Ice";
                 BtnSweetDecafFlavorSpecial.Content = "Decaf";
+                BtnLemonCreamSpecial.IsEnabled = true;
+                BtnLemonCreamSpecial.Content = "Add Cream";
             }
             else if (drink.Description.Contains("Water"))
             {
                 BtnSweetDecafFlavorSpecial.IsEnabled = false;
-                BtnLemonSpecial.IsEnabled = true;
+                BtnLemonCreamSpecial.IsEnabled = true;
+                BtnLemonCreamSpecial.Content = "Add Lemon";
             }
         }
 
@@ -122,7 +126,8 @@ namespace PointOfSale
                 cc.NotifyItemChanged("Special");
             }
             BtnSweetDecafFlavorSpecial.Content = "Sweet";
-            BtnLemonSpecial.IsEnabled = true;
+            BtnLemonCreamSpecial.IsEnabled = true;
+            BtnLemonCreamSpecial.Content = "Add Lemon";
         }
 
         /// <summary>
@@ -147,6 +152,8 @@ namespace PointOfSale
             }
             BtnIceSpecial.Content = "Add Ice";
             BtnSweetDecafFlavorSpecial.Content = "Decaf";
+            BtnLemonCreamSpecial.IsEnabled = true;
+            BtnLemonCreamSpecial.Content = "Add Cream";
         }
 
         /// <summary>
@@ -169,7 +176,8 @@ namespace PointOfSale
                 cc.NotifyItemChanged("Special");
             }
             BtnSweetDecafFlavorSpecial.IsEnabled = false;
-            BtnLemonSpecial.IsEnabled = true;
+            BtnLemonCreamSpecial.IsEnabled = true;
+            BtnLemonCreamSpecial.Content = "Add Lemon";
         }
 
         /// <summary>
@@ -301,11 +309,11 @@ namespace PointOfSale
         }
 
         /// <summary>
-        /// Adds lemon
+        /// Adds lemon or leaves room for cream
         /// </summary>
         /// <param name="sender">Button that was pressed.</param>
         /// <param name="e">Event arguments.</param>
-        private void AddLemon(object sender, RoutedEventArgs e)
+        private void AddLemonCream(object sender, RoutedEventArgs e)
         {
             if (this.Drink is Water water)
             {
@@ -314,6 +322,10 @@ namespace PointOfSale
             else if (this.Drink is Tyrannotea tt)
             {
                 tt.AddLemon();
+            }
+            else if (this.Drink is JurassicJava jj)
+            {
+                jj.LeaveRoomForCream();
             }
             if (cc != null)
             {

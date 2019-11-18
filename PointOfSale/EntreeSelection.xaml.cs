@@ -96,7 +96,30 @@ namespace PointOfSale
             if (DataContext is Order order)
             {
                 order.Add(entree);
-                NavigationService.Navigate(new MenuCategorySelection());
+                if (entree is Brontowurst bw)
+                {
+                    NavigationService.Navigate(new CustomizeBrontowurst(bw));
+                }
+                else if (entree is DinoNuggets dn)
+                {
+                    NavigationService.Navigate(new CustomizeDinoNuggets(dn));
+                }
+                else if (entree is SteakosaurusBurger sb)
+                {
+                    NavigationService.Navigate(new CustomizeSteakosaurusBurger(sb));
+                }
+                else if (entree is TRexKingBurger kb)
+                {
+                    NavigationService.Navigate(new CustomizeTRexKingBurger(kb));
+                }
+                else if (entree is PrehistoricPBJ pbj)
+                {
+                    NavigationService.Navigate(new CustomizePBJ(pbj));
+                }
+                else if (entree is VelociWrap vw)
+                {
+                    NavigationService.Navigate(new CustomizeVelociWrap(vw));
+                }
             }
         }
     }

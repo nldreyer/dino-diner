@@ -12,3 +12,22 @@ body {
     padding-right: 15px;
 }
 
+.menu-item {
+    display: grid;
+    grid-template-columns: 225px 100px 100px 200px;
+    border-bottom: 1px dashed gray;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+#available-items {
+    width: 625px;
+    margin: 0 auto;
+}
+
