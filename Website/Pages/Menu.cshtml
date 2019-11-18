@@ -1,0 +1,18 @@
+﻿@page
+@model Website.Pages.MenuModel
+@{
+    ViewData["Title"] = "Menu";
+}
+
+<h1>Menu</h1>
+
+<h2>Combos</h2>
+@foreach (var combo in @Model.menu.AvailableCombos)
+{
+<div class="menu-item">
+    <div class="item-name">@combo.Description</div>
+    <div class="item-price">@combo.Price</div>
+    <div class="item-calories">@combo.Calories</div>
+    <div class="item-ingredients">@combo.Ingredients</div>
+</div>
+}

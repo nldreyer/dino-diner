@@ -20,7 +20,7 @@ namespace DinoDiner.Menu
                 availableMenuItems.AddRange(AvailableSides);
                 availableMenuItems.AddRange(AvailableDrinks);
                 availableMenuItems.AddRange(AvailableCombos);
-                return availableMenuItems;
+                return new List<IMenuItem>(availableMenuItems);
             }
         }
 
@@ -48,7 +48,7 @@ namespace DinoDiner.Menu
                 entrees.Add(tRexKingBurger);
                 entrees.Add(velociWrap);
 
-                return entrees;
+                return new List<IMenuItem>(entrees);
             }
         }
 
@@ -70,7 +70,7 @@ namespace DinoDiner.Menu
                 sides.Add(mezzorellaSticks);
                 sides.Add(triceritots);
 
-                return sides;
+                return new List<IMenuItem>(sides);
             }
         }
 
@@ -92,7 +92,7 @@ namespace DinoDiner.Menu
                 drinks.Add(tyrannotea);
                 drinks.Add(water);
 
-                return drinks;
+                return new List<IMenuItem>(drinks);
             }
         }
 
@@ -108,7 +108,7 @@ namespace DinoDiner.Menu
                 {
                     availableCombos.Add(new CretaceousCombo((Entree)entree));
                 }
-                return availableCombos;
+                return new List<IMenuItem>(availableCombos);
             }
         }
 
