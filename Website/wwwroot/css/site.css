@@ -26,8 +26,19 @@ h2 {
     text-align: center;
 }
 
+#wrapper {
+    height: auto;
+    overflow: hidden;
+}
+
 #available-items {
-    width: 625px;
-    margin: 0 auto;
+    width: 75vw;
+    float: left;
+    overflow: hidden;
+}
+
+form {
+    width: 20vw;
+    float: right;
 }
 
