@@ -82,27 +82,29 @@ namespace DinoDiner.Menu
                     items = entrees;
                 }
             }
-            /*List<IMenuItem> items = new List<IMenuItem>();
-            foreach (IMenuItem item in availableItems)
+            if (sides != null)
             {
-                if (item is CretaceousCombo && category.Contains("Combo"))
+                if (items != null)
                 {
-                    items.Add(item);
+                    items = items.Concat(sides);
                 }
-                else if (item is Entree && category.Contains("Entree"))
+                else
                 {
-                    items.Add(item);
+                    items = sides;
                 }
-                else if (item is Side && category.Contains("Side"))
+            }
+            if (drinks != null)
+            {
+                if (items != null)
                 {
-                    items.Add(item);
+                    items = items.Concat(drinks);
                 }
-                else if (item is Drink && category.Contains("Drink"))
+                else
                 {
-                    items.Add(item);
+                    items = drinks;
                 }
-            }*/
-            return combos.GroupJoin(entrees).ToList();
+            }
+            return items.ToList();
         }
 
         /// <summary>
@@ -114,14 +116,6 @@ namespace DinoDiner.Menu
         public static List<IMenuItem> Search(List<IMenuItem> availableItems, string search)
         {
             IEnumerable<IMenuItem> items = availableItems.Where(item => item.Description.ToLower().Contains(search.ToLower()));
-            /*List<IMenuItem> items = new List<IMenuItem>();
-            foreach (IMenuItem item in availableItems)
-            {
-                if (item.Description.Contains(search))
-                {
-                    items.Add(item);
-                }
-            }*/
             return items.ToList();
         }
 
@@ -208,14 +202,6 @@ namespace DinoDiner.Menu
         public static List<IMenuItem> FilterMin(List<IMenuItem> availableItems, float min)
         {
             IEnumerable<IMenuItem> items = availableItems.Where(item => item.Price - min > -0.001);
-            /*List<IMenuItem> items = new List<IMenuItem>();
-            foreach (IMenuItem item in availableItems)
-            {
-                if (item.Price - min > -0.001)
-                {
-                    items.Add(item);
-                }
-            }*/
             return items.ToList();
         }
 
@@ -228,15 +214,6 @@ namespace DinoDiner.Menu
         public static List<IMenuItem> FilterMax(List<IMenuItem> availableItems, float max)
         {
             IEnumerable<IMenuItem> items = availableItems.Where(item => item.Price - max < -.000000000001);
-            /*List<IMenuItem> items = new List<IMenuItem>();
-            foreach (IMenuItem item in availableItems)
-            {
-                double temp = item.Price - max;
-                if (item.Price - max < -0.000000000001)
-                {
-                    items.Add(item);
-                }
-            }*/
             return items.ToList();
         }
 
@@ -247,17 +224,6 @@ namespace DinoDiner.Menu
             {
                 items = items.Where(item => !item.Ingredients.Contains(ingredient));
             }
-            /*List<IMenuItem> items = new List<IMenuItem>(availableItems);
-            foreach (IMenuItem item in availableItems)
-            {
-                foreach (String ingredient in excludeIngredients)
-                {
-                    if (item.Ingredients.Contains(ingredient))
-                    {
-                        items.Remove(item);
-                    }
-                }
-            }*/
             return items.ToList();
         }
 
@@ -277,6 +243,7 @@ namespace DinoDiner.Menu
                         }
                     }
                 }
+                ingredients.Sort();
                 return ingredients;
             }
         } 
